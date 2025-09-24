@@ -1,10 +1,17 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
-// Placeholder component for language selection
 const LanguageSelector = () => {
+  const { currentLanguage, setLanguage, availableLanguages } = useLanguage();
+
+  const handleLanguageChange = (e) => {
+    setLanguage(e.target.value);
+  };
+
   return (
     <select 
-      defaultValue="en" 
+      value={currentLanguage}
+      onChange={handleLanguageChange}
       style={{ 
         padding: '0.25rem 0.5rem', 
         borderRadius: '3px', 
@@ -12,9 +19,11 @@ const LanguageSelector = () => {
         backgroundColor: 'white'
       }}
     >
-      <option value="en">English</option>
-      <option value="hi">हिंदी</option>
-      <option value="te">తెలుగు</option>
+      {availableLanguages.map((lang) => (
+        <option key={lang.code} value={lang.code}>
+          {lang.name}
+        </option>
+      ))}
     </select>
   );
 };

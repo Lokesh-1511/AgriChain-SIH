@@ -1,0 +1,17 @@
+{
+  "nav": { 
+    "home": "Home", 
+    "farmer": "Farmer", 
+    "consumer": "Consumer" 
+  },
+  "hero": { 
+    "title": "AGRICHAIN — Farm to table traceability", 
+    "subtitle": "Connect farmers with consumers directly" 
+  },
+  "auth": { 
+    "register": "Register", 
+    "login": "Login", 
+    "name": "Name", 
+    "email": "Email" 
+  }
+}
