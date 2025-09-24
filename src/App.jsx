@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import LandingPage from './pages/LandingPage';
 import FarmerRegister from './pages/FarmerRegister';
 import FarmerLogin from './pages/FarmerLogin';
+import FarmerVerification from './pages/FarmerVerification';
 import FarmerDashboard from './pages/FarmerDashboard';
 import ConsumerRegister from './pages/ConsumerRegister';
 import ConsumerLogin from './pages/ConsumerLogin';
@@ -27,6 +28,7 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/farmer/register" element={<FarmerRegister />} />
               <Route path="/farmer/login" element={<FarmerLogin />} />
+              <Route path="/farmer/verification" element={<FarmerVerification />} />
               <Route path="/farmer/dashboard" element={<FarmerDashboard />} />
               <Route path="/farmer/verify" element={<VerifyAadhaar />} />
               <Route path="/consumer/register" element={<ConsumerRegister />} />

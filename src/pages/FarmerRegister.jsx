@@ -102,7 +102,7 @@ const FarmerRegister = () => {
       localStorage.setItem('agrichain-pending-verification', 'true');
       
       // Navigate to verification
-      navigate('/farmer/verify');
+      navigate('/farmer/verification');
       
       setIsSubmitting(false);
     }
