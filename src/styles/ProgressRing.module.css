@@ -1,0 +1,64 @@
+/* ProgressRing Styles */
+.progressRing {
+  position: relative;
+  display: inline-block;
+}
+
+.ring {
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.progressCircle {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.centerContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+/* Responsive sizes */
+.progressRing.small .value {
+  font-size: 1rem;
+}
+
+.progressRing.small .label {
+  font-size: 0.65rem;
+}
+
+.progressRing.large .value {
+  font-size: 2rem;
+}
+
+.progressRing.large .label {
+  font-size: 0.875rem;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .progressCircle {
+    transition: none;
+  }
+}

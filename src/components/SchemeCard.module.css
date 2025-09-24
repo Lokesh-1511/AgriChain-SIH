@@ -1,0 +1,184 @@
+.schemeCard {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: slideUpFadeIn 0.6s ease-out;
+  border-left: 4px solid #4CAF50;
+}
+
+.schemeCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.schemeName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2E7D32;
+  margin: 0;
+}
+
+.eligibilityBadge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.eligibilityHigh {
+  background: #E8F5E8;
+  color: #2E7D32;
+}
+
+.eligibilityMedium {
+  background: #FFF3E0;
+  color: #F57C00;
+}
+
+.eligibilityLow {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.benefit {
+  background: #F0F8FF;
+  color: #1976D2;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  border: 1px solid #E3F2FD;
+}
+
+.aiSection {
+  background: #F8F4FF;
+  border: 1px solid #E8EAFF;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.aiHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.aiIcon {
+  font-size: 16px;
+}
+
+.aiTitle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #5E35B1;
+  margin: 0;
+}
+
+.aiReason {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.cardActions {
+  display: flex;
+  gap: 12px;
+}
+
+.applyButton {
+  flex: 1;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.applyButton:hover {
+  background: #45A049;
+}
+
+.applyButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.appliedButton {
+  background: #2196F3;
+  color: white;
+}
+
+.appliedButton:hover {
+  background: #1976D2;
+}
+
+.detailsButton {
+  background: transparent;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.detailsButton:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .schemeCard {
+    padding: 16px;
+  }
+  
+  .cardActions {
+    flex-direction: column;
+  }
+  
+  .benefits {
+    justify-content: center;
+  }
+}
