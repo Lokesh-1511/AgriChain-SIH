@@ -6,31 +6,174 @@
   justify-content: center;
   padding: 2rem;
   text-align: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .hero {
-  max-width: 600px;
-  margin-bottom: 3rem;
+  max-width: 900px;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #2c5530;
   margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(44, 85, 48, 0.1);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 3rem;
   line-height: 1.6;
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
+.dashboardCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.dashboardCard {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboardCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(44, 85, 48, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.dashboardCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(44, 85, 48, 0.15);
+  border-color: rgba(44, 85, 48, 0.2);
+  text-decoration: none;
+}
+
+.dashboardCard:hover::before {
+  left: 100%;
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: #2c5530;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.cardSubtitle {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.cardButton {
+  background: linear-gradient(45deg, #2c5530, #3a6b3e);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.dashboardCard:hover .cardButton {
+  background: linear-gradient(45deg, #1a3a1e, #2c5530);
+  transform: scale(1.05);
+}
+
+.registerLinks {
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+  margin-top: 1rem;
+}
+
+.registerLinks p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.registerLink {
+  color: #2c5530;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: all 0.2s ease;
+  border-bottom: 1px dotted #2c5530;
+}
+
+.registerLink:hover {
+  color: #1a3a1e;
+  text-decoration: none;
+  border-bottom: 1px solid #1a3a1e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .dashboardCards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .dashboardCard {
+    padding: 1.5rem;
+  }
+}
+
+/* Legacy styles for backward compatibility */
 .actions {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .primaryBtn {

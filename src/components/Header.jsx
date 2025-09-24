@@ -5,7 +5,7 @@ import LanguageSelector from './LanguageSelector';
 import styles from '../styles/Header.module.css';
 
 const Header = () => {
-  const { t, currentLanguage } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <header className={styles.header}>
@@ -32,7 +32,6 @@ const Header = () => {
             </li>
           </ul>
           <div className={styles.languageSelector}>
-            <span className={styles.currentLang}>({currentLanguage.toUpperCase()})</span>
             <LanguageSelector />
           </div>
         </nav>

@@ -54,11 +54,4 @@
   margin-left: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.currentLang {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
 }

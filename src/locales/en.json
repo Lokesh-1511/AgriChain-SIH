@@ -6,7 +6,11 @@
   },
   "hero": { 
     "title": "AGRICHAIN — Farm to table traceability", 
-    "subtitle": "Connect farmers with consumers directly" 
+    "subtitle": "Connect farmers with consumers directly",
+    "farmerDashboard": "Farmer Dashboard",
+    "consumerDashboard": "Consumer Dashboard",
+    "farmerSubtitle": "Manage your crops and supply chain",
+    "consumerSubtitle": "Track food from farm to your table"
   },
   "auth": { 
     "register": "Register", 

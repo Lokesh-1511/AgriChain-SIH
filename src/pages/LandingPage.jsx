@@ -13,13 +13,37 @@ const LandingPage = () => {
         <p className={styles.subtitle}>
           {t('hero.subtitle')}
         </p>
-        <div className={styles.actions}>
-          <Link to="/farmer/register" className={styles.primaryBtn}>
-            Join as {t('nav.farmer')}
+        
+        <div className={styles.dashboardCards}>
+          <Link to="/farmer/dashboard" className={styles.dashboardCard}>
+            <div className={styles.cardIcon}>🌾</div>
+            <h3 className={styles.cardTitle}>{t('hero.farmerDashboard')}</h3>
+            <p className={styles.cardSubtitle}>{t('hero.farmerSubtitle')}</p>
+            <div className={styles.cardButton}>
+              {t('auth.login')} →
+            </div>
           </Link>
-          <Link to="/consumer/register" className={styles.secondaryBtn}>
-            Join as {t('nav.consumer')}
+          
+          <Link to="/consumer/dashboard" className={styles.dashboardCard}>
+            <div className={styles.cardIcon}>🛒</div>
+            <h3 className={styles.cardTitle}>{t('hero.consumerDashboard')}</h3>
+            <p className={styles.cardSubtitle}>{t('hero.consumerSubtitle')}</p>
+            <div className={styles.cardButton}>
+              {t('auth.login')} →
+            </div>
           </Link>
+        </div>
+
+        <div className={styles.registerLinks}>
+          <p>New user? 
+            <Link to="/farmer/register" className={styles.registerLink}>
+              {t('nav.farmer')} {t('auth.register')}
+            </Link>
+            or
+            <Link to="/consumer/register" className={styles.registerLink}>
+              {t('nav.consumer')} {t('auth.register')}
+            </Link>
+          </p>
         </div>
       </div>
     </div>

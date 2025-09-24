@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import styles from '../styles/LanguageSelector.module.css';
 
 const LanguageSelector = () => {
   const { currentLanguage, setLanguage, availableLanguages } = useLanguage();
@@ -9,22 +10,20 @@ const LanguageSelector = () => {
   };
 
   return (
-    <select 
-      value={currentLanguage}
-      onChange={handleLanguageChange}
-      style={{ 
-        padding: '0.25rem 0.5rem', 
-        borderRadius: '3px', 
-        border: '1px solid #ccc',
-        backgroundColor: 'white'
-      }}
-    >
-      {availableLanguages.map((lang) => (
-        <option key={lang.code} value={lang.code}>
-          {lang.name}
-        </option>
-      ))}
-    </select>
+    <div className={styles.selectorWrapper}>
+      <select 
+        value={currentLanguage}
+        onChange={handleLanguageChange}
+        className={styles.selector}
+        title="Select Language"
+      >
+        {availableLanguages.map((lang) => (
+          <option key={lang.code} value={lang.code}>
+            {lang.name} ({lang.code.toUpperCase()})
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 
