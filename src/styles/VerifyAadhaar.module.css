@@ -1,0 +1,287 @@
+/* VerifyAadhaar Page Styles */
+.verifyPage {
+  min-height: calc(100vh - 140px);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verifyContainer {
+  width: 100%;
+  max-width: 500px;
+}
+
+.verifyCard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.verifyHeader {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.verifyTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.verifySubtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.verifyForm {
+  padding: 2rem;
+}
+
+.otpSection {
+  margin-bottom: 1.5rem;
+}
+
+.otpLabel {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.otpInputs {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.otpInput {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  background: white;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.otpInput:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.otpInput:hover {
+  border-color: #9ca3af;
+}
+
+.otpInputError {
+  border-color: #ef4444;
+}
+
+.otpInputError:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.errorMessage {
+  display: block;
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.submitButton {
+  width: 100%;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  font-family: inherit;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.resendButton {
+  width: 100%;
+  background: transparent;
+  color: #7c3aed;
+  border: 2px solid #7c3aed;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  font-family: inherit;
+}
+
+.resendButton:hover {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.resendButton:active {
+  transform: translateY(0);
+}
+
+.verifyFooter {
+  background: #f8fafc;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid #e2e8f0;
+}
+
+.securityNote {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .verifyPage {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+  
+  .verifyHeader {
+    padding: 1.5rem;
+  }
+  
+  .verifyTitle {
+    font-size: 1.5rem;
+  }
+  
+  .verifyForm {
+    padding: 1.5rem;
+  }
+  
+  .verifyFooter {
+    padding: 1rem 1.5rem;
+  }
+  
+  .submitButton {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .otpInputs {
+    gap: 0.5rem;
+  }
+  
+  .otpInput {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .otpInputs {
+    gap: 0.375rem;
+  }
+  
+  .otpInput {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+  
+  .securityNote {
+    font-size: 0.8rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .verifyCard {
+    animation: none;
+  }
+  
+  .submitButton,
+  .resendButton {
+    transition: none;
+  }
+  
+  .submitButton:hover:not(:disabled) {
+    transform: none;
+  }
+  
+  .resendButton:hover {
+    transform: none;
+  }
+}
+
+/* Focus styles */
+.submitButton:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.3);
+  outline-offset: 2px;
+}
+
+.resendButton:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.3);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .otpInput {
+    border-width: 3px;
+  }
+  
+  .submitButton,
+  .resendButton {
+    border-width: 2px;
+  }
+}

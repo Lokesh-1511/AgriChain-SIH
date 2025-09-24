@@ -1,0 +1,118 @@
+/* FormInput Component Styles */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.required {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #374151;
+  background-color: white;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2c5530;
+  box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
+}
+
+.input:hover:not(:disabled) {
+  border-color: #d1d5db;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+/* Textarea specific styles */
+.input[rows] {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Error state */
+.inputError {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.inputError:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.errorMessage::before {
+  content: '⚠';
+  font-size: 0.8rem;
+}
+
+/* Disabled state */
+.inputDisabled {
+  background-color: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.inputDisabled:hover {
+  border-color: #e5e7eb;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .input {
+    padding: 0.875rem 1rem;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .inputGroup {
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .input {
+    border-width: 2px;
+  }
+  
+  .inputError {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .input {
+    transition: none;
+  }
+}

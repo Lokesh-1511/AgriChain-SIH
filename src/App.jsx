@@ -12,6 +12,8 @@ import FarmerDashboard from './pages/FarmerDashboard';
 import ConsumerRegister from './pages/ConsumerRegister';
 import ConsumerLogin from './pages/ConsumerLogin';
 import ConsumerDashboard from './pages/ConsumerDashboard';
+import VerifyAadhaar from './pages/VerifyAadhaar';
+import VerificationComplete from './pages/VerificationComplete';
 import TracePage from './pages/TracePage';
 
 function App() {
@@ -26,9 +28,12 @@ function App() {
               <Route path="/farmer/register" element={<FarmerRegister />} />
               <Route path="/farmer/login" element={<FarmerLogin />} />
               <Route path="/farmer/dashboard" element={<FarmerDashboard />} />
+              <Route path="/farmer/verify" element={<VerifyAadhaar />} />
               <Route path="/consumer/register" element={<ConsumerRegister />} />
               <Route path="/consumer/login" element={<ConsumerLogin />} />
               <Route path="/consumer/dashboard" element={<ConsumerDashboard />} />
+              <Route path="/consumer/verify" element={<VerifyAadhaar />} />
+              <Route path="/verification-complete" element={<VerificationComplete />} />
               <Route path="/trace/:productId" element={<TracePage />} />
             </Routes>
           </main>

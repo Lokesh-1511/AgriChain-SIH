@@ -1,0 +1,169 @@
+/* ConsumerLogin Page Styles - Consumer theme */
+.loginPage {
+  min-height: calc(100vh - 140px);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginContainer {
+  width: 100%;
+  max-width: 450px;
+}
+
+.loginCard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loginHeader {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loginTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.loginSubtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.loginForm {
+  padding: 2rem;
+}
+
+.submitButton {
+  width: 100%;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  font-family: inherit;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loginFooter {
+  background: #f8fafc;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid #e2e8f0;
+}
+
+.loginFooter p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.registerLink {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.registerLink:hover {
+  color: #1e3a8a;
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .loginPage {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+  
+  .loginHeader {
+    padding: 1.5rem;
+  }
+  
+  .loginTitle {
+    font-size: 1.5rem;
+  }
+  
+  .loginForm {
+    padding: 1.5rem;
+  }
+  
+  .loginFooter {
+    padding: 1rem 1.5rem;
+  }
+  
+  .submitButton {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .loginCard {
+    animation: none;
+  }
+  
+  .submitButton {
+    transition: none;
+  }
+  
+  .submitButton:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Focus styles */
+.submitButton:focus {
+  outline: 3px solid rgba(30, 64, 175, 0.3);
+  outline-offset: 2px;
+}
+
+.registerLink:focus {
+  outline: 2px solid #1e40af;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

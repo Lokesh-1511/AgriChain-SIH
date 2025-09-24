@@ -37,7 +37,34 @@
   "auth": { 
     "register": "Register", 
     "login": "Login", 
-    "name": "Name", 
-    "email": "Email" 
+    "name": "Full Name", 
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "address": "Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "createAccount": "Create Account",
+    "loginToAccount": "Login to Your Account"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordMismatch": "Passwords do not match",
+    "minLength": "Minimum {min} characters required",
+    "maxLength": "Maximum {max} characters allowed"
+  },
+  "verification": {
+    "aadhaar": "Aadhaar Verification",
+    "aadhaarNumber": "Aadhaar Number",
+    "sendOTP": "Send OTP",
+    "enterOTP": "Enter OTP",
+    "verifyOTP": "Verify OTP",
+    "otpSent": "OTP sent to your registered mobile number",
+    "verificationComplete": "Verification Complete",
+    "successMessage": "Your account has been verified successfully"
   }
 }
