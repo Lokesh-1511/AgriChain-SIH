@@ -1,20 +1,182 @@
+/* Mobile-first Landing Page Styles */
 .landingPage {
   min-height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  animation: pageLoad 0.6s ease-out;
 }
 
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Section - Mobile First */
 .hero {
-  max-width: 900px;
-  margin-bottom: 2rem;
-  animation: fadeInUp 0.8s ease-out;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 2rem;
+  color: #2c5530;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(44, 85, 48, 0.1);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* CTA Cards - Mobile First */
+.ctaCards {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.ctaCard {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transform: scale(1);
+}
+
+.ctaCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.ctaCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 40px rgba(44, 85, 48, 0.15);
+  border-color: rgba(44, 85, 48, 0.2);
+  text-decoration: none;
+}
+
+.ctaCard:hover::before {
+  left: 100%;
+}
+
+.ctaCard:active {
+  transform: scale(0.98);
+}
+
+.ctaIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.ctaTitle {
+  font-size: 1.25rem;
+  color: #2c5530;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.ctaDesc {
+  color: #64748b;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.ctaButton {
+  background: linear-gradient(45deg, #2c5530, #3a6b3e);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 500;
+  display: inline-block;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.ctaCard:hover .ctaButton {
+  background: linear-gradient(45deg, #1a3a1e, #2c5530);
+  transform: translateY(-1px);
+}
+
+/* Features Section - Mobile First */
+.features {
+  padding: 2rem 1rem 3rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.featuresGrid {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.featureCard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featureIcon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.featureTitle {
+  font-size: 1rem;
+  color: #2c5530;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.featureDesc {
+  color: #64748b;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Fade-in animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -26,189 +188,91 @@
   }
 }
 
-.title {
-  font-size: 2.8rem;
-  color: #2c5530;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(44, 85, 48, 0.1);
-  animation: fadeInUp 0.8s ease-out 0.2s both;
-}
-
-.subtitle {
-  font-size: 1.3rem;
-  color: #555;
-  margin-bottom: 3rem;
-  line-height: 1.6;
-  font-weight: 400;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
-}
-
-.dashboardCards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
-}
-
-.dashboardCard {
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.dashboardCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(44, 85, 48, 0.1), transparent);
-  transition: left 0.5s ease;
-}
-
-.dashboardCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(44, 85, 48, 0.15);
-  border-color: rgba(44, 85, 48, 0.2);
-  text-decoration: none;
-}
-
-.dashboardCard:hover::before {
-  left: 100%;
-}
-
-.cardIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.cardTitle {
-  font-size: 1.5rem;
-  color: #2c5530;
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-}
-
-.cardSubtitle {
-  color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.cardButton {
-  background: linear-gradient(45deg, #2c5530, #3a6b3e);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 500;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.dashboardCard:hover .cardButton {
-  background: linear-gradient(45deg, #1a3a1e, #2c5530);
-  transform: scale(1.05);
-}
-
-.registerLinks {
-  animation: fadeInUp 0.8s ease-out 0.8s both;
-  margin-top: 1rem;
-}
-
-.registerLinks p {
-  color: #666;
-  font-size: 0.95rem;
-}
-
-.registerLink {
-  color: #2c5530;
-  text-decoration: none;
-  font-weight: 500;
-  margin: 0 0.5rem;
-  transition: all 0.2s ease;
-  border-bottom: 1px dotted #2c5530;
-}
-
-.registerLink:hover {
-  color: #1a3a1e;
-  text-decoration: none;
-  border-bottom: 1px solid #1a3a1e;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.2rem;
+/* Tablet Styles - min-width: 768px */
+@media (min-width: 768px) {
+  .hero {
+    padding: 3rem 2rem;
   }
-  
-  .subtitle {
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .ctaCards {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .ctaCard {
+    padding: 2rem;
+  }
+
+  .ctaIcon {
+    font-size: 3rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.4rem;
+  }
+
+  .ctaDesc {
+    font-size: 1rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Desktop Styles - min-width: 1024px */
+@media (min-width: 1024px) {
+  .hero {
+    padding: 4rem 2rem;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+  }
+
+  .ctaCards {
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+
+  .ctaCard {
+    padding: 2.5rem;
+  }
+
+  .features {
+    padding: 3rem 2rem 4rem;
+  }
+
+  .featuresGrid {
+    gap: 2.5rem;
+  }
+
+  .featureCard {
+    padding: 2rem;
+  }
+
+  .featureTitle {
     font-size: 1.1rem;
   }
-  
-  .dashboardCards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+
+  .featureDesc {
+    font-size: 0.9rem;
   }
-  
-  .dashboardCard {
-    padding: 1.5rem;
-  }
-}
-
-/* Legacy styles for backward compatibility */
-.actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
-}
-
-.primaryBtn {
-  background-color: #2c5530;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background-color 0.2s;
-  display: inline-block;
-}
-
-.primaryBtn:hover {
-  background-color: #1a3a1e;
-  text-decoration: none;
-}
-
-.secondaryBtn {
-  background-color: transparent;
-  color: #2c5530;
-  border: 2px solid #2c5530;
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s;
-  display: inline-block;
-}
-
-.secondaryBtn:hover {
-  background-color: #2c5530;
-  color: white;
-  text-decoration: none;
 }

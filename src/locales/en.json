@@ -7,10 +7,32 @@
   "hero": { 
     "title": "AGRICHAIN — Farm to table traceability", 
     "subtitle": "Connect farmers with consumers directly",
-    "farmerDashboard": "Farmer Dashboard",
-    "consumerDashboard": "Consumer Dashboard",
-    "farmerSubtitle": "Manage your crops and supply chain",
-    "consumerSubtitle": "Track food from farm to your table"
+    "farmerCTA": "Farmer Login",
+    "consumerCTA": "Consumer Login",
+    "farmerDesc": "Manage crops, track supply chain, and connect with buyers",
+    "consumerDesc": "Verify food origins, quality, and support local farmers"
+  },
+  "features": {
+    "traceability": {
+      "title": "Full Traceability",
+      "desc": "Track every step from seed to plate"
+    },
+    "ai": {
+      "title": "AI Advisory",
+      "desc": "Smart farming recommendations powered by data"
+    },
+    "payments": {
+      "title": "Direct Payments",
+      "desc": "Fair prices with blockchain-secured transactions"
+    }
+  },
+  "footer": {
+    "language": "Language:",
+    "links": "Quick Links",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms"
   },
   "auth": { 
     "register": "Register", 

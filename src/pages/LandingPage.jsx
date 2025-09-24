@@ -8,44 +8,57 @@ const LandingPage = () => {
 
   return (
     <div className={styles.landingPage}>
-      <div className={styles.hero}>
-        <h1 className={styles.title}>{t('hero.title')}</h1>
-        <p className={styles.subtitle}>
-          {t('hero.subtitle')}
-        </p>
-        
-        <div className={styles.dashboardCards}>
-          <Link to="/farmer/dashboard" className={styles.dashboardCard}>
-            <div className={styles.cardIcon}>🌾</div>
-            <h3 className={styles.cardTitle}>{t('hero.farmerDashboard')}</h3>
-            <p className={styles.cardSubtitle}>{t('hero.farmerSubtitle')}</p>
-            <div className={styles.cardButton}>
-              {t('auth.login')} →
-            </div>
-          </Link>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>{t('hero.title')}</h1>
+          <p className={styles.heroSubtitle}>{t('hero.subtitle')}</p>
           
-          <Link to="/consumer/dashboard" className={styles.dashboardCard}>
-            <div className={styles.cardIcon}>🛒</div>
-            <h3 className={styles.cardTitle}>{t('hero.consumerDashboard')}</h3>
-            <p className={styles.cardSubtitle}>{t('hero.consumerSubtitle')}</p>
-            <div className={styles.cardButton}>
-              {t('auth.login')} →
-            </div>
-          </Link>
+          {/* Main CTA Cards */}
+          <div className={styles.ctaCards}>
+            <Link to="/farmer/login" className={`${styles.ctaCard} ${styles.farmerCard}`}>
+              <div className={styles.ctaIcon}>🌾</div>
+              <h3 className={styles.ctaTitle}>{t('hero.farmerCTA')}</h3>
+              <p className={styles.ctaDesc}>{t('hero.farmerDesc')}</p>
+              <div className={styles.ctaButton}>
+                {t('auth.login')} →
+              </div>
+            </Link>
+            
+            <Link to="/consumer/login" className={`${styles.ctaCard} ${styles.consumerCard}`}>
+              <div className={styles.ctaIcon}>🛒</div>
+              <h3 className={styles.ctaTitle}>{t('hero.consumerCTA')}</h3>
+              <p className={styles.ctaDesc}>{t('hero.consumerDesc')}</p>
+              <div className={styles.ctaButton}>
+                {t('auth.login')} →
+              </div>
+            </Link>
+          </div>
         </div>
+      </section>
 
-        <div className={styles.registerLinks}>
-          <p>New user? 
-            <Link to="/farmer/register" className={styles.registerLink}>
-              {t('nav.farmer')} {t('auth.register')}
-            </Link>
-            or
-            <Link to="/consumer/register" className={styles.registerLink}>
-              {t('nav.consumer')} {t('auth.register')}
-            </Link>
-          </p>
+      {/* Features Section */}
+      <section className={styles.features}>
+        <div className={styles.featuresGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🔍</div>
+            <h4 className={styles.featureTitle}>{t('features.traceability.title')}</h4>
+            <p className={styles.featureDesc}>{t('features.traceability.desc')}</p>
+          </div>
+          
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🤖</div>
+            <h4 className={styles.featureTitle}>{t('features.ai.title')}</h4>
+            <p className={styles.featureDesc}>{t('features.ai.desc')}</p>
+          </div>
+          
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>💳</div>
+            <h4 className={styles.featureTitle}>{t('features.payments.title')}</h4>
+            <p className={styles.featureDesc}>{t('features.payments.desc')}</p>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
