@@ -1,12 +1,30 @@
 /* ProductCard Styles */
 .productCard {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7eb;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   overflow: hidden;
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.5s ease-out;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease-out;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.productCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981 0%, #059669 50%, #047857 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.productCard:hover::before {
+  opacity: 1;
 }
 
 @keyframes fadeInUp {
@@ -21,8 +39,8 @@
 }
 
 .productCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(16, 185, 129, 0.1);
 }
 
 .productImage {
@@ -50,12 +68,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 50%, #a7f3d0 100%);
+  position: relative;
+}
+
+.imagePlaceholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
 }
 
 .placeholderIcon {
-  font-size: 3rem;
-  color: #9ca3af;
+  font-size: 3.5rem;
+  color: #059669;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 .statusBadge {
@@ -71,27 +102,32 @@
 }
 
 .statusActive {
-  background: #dcfce7;
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
   color: #166534;
+  border: 1px solid rgba(22, 101, 52, 0.2);
 }
 
 .statusSold {
-  background: #fef3c7;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   color: #92400e;
+  border: 1px solid rgba(146, 64, 14, 0.2);
 }
 
 .statusExpired {
-  background: #fecaca;
+  background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
   color: #991b1b;
+  border: 1px solid rgba(153, 27, 27, 0.2);
 }
 
 .statusDefault {
-  background: #f3f4f6;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
   color: #6b7280;
+  border: 1px solid rgba(107, 114, 128, 0.2);
 }
 
 .productInfo {
-  padding: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
 }
 
 .productHeader {
@@ -112,15 +148,34 @@
 }
 
 .category {
-  background: #f0fdf4;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
   color: #16a34a;
-  padding: 0.25rem 0.75rem;
-  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   flex-shrink: 0;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.productCard:hover .category::before {
+  left: 100%;
 }
 
 .productDetails {
@@ -137,9 +192,13 @@
 }
 
 .price {
-  color: #16a34a;
-  font-size: 1.5rem;
-  font-weight: 700;
+  background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.75rem;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
 }
 
 .unit {
@@ -193,33 +252,42 @@
 }
 
 .editButton {
-  background: #fef3c7;
+  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
   color: #92400e;
+  border: 1px solid rgba(252, 211, 77, 0.3);
+  box-shadow: 0 2px 8px rgba(252, 211, 77, 0.2);
 }
 
 .editButton:hover {
-  background: #fcd34d;
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(252, 211, 77, 0.3);
 }
 
 .deleteButton {
-  background: #fecaca;
+  background: linear-gradient(135deg, #fecaca 0%, #f87171 100%);
   color: #991b1b;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  box-shadow: 0 2px 8px rgba(248, 113, 113, 0.2);
 }
 
 .deleteButton:hover {
-  background: #f87171;
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(248, 113, 113, 0.3);
 }
 
 .viewButton {
-  background: #dbeafe;
+  background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
   color: #1d4ed8;
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  box-shadow: 0 2px 8px rgba(147, 197, 253, 0.2);
 }
 
 .viewButton:hover {
-  background: #93c5fd;
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(147, 197, 253, 0.3);
 }
 
 /* Mobile Responsiveness */

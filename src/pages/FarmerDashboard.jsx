@@ -5,17 +5,21 @@ import ProductCard from '../components/ProductCard';
 import ProgressRing from '../components/ProgressRing';
 import SchemeCard from '../components/SchemeCard';
 import ChatWidget from '../components/ChatWidget';
-import mockTransactions from '../data/mockTransactions.json';
+import { fetchProducts, fetchTransactions, fetchDashboardStats, postProduct, updateProduct, deleteProduct } from '../utils/fakeApi';
 import styles from '../styles/FarmerDashboard.module.css';
 
 const FarmerDashboard = () => {
   const { t } = useLanguage();
+  // Cache busting comment - 2025-09-26
   
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
   const [farmerData, setFarmerData] = useState(null);
   const [products, setProducts] = useState([]);
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [dashboardStats, setDashboardStats] = useState(null);
 
   // Claims state
   const [claims, setClaims] = useState([]);
@@ -27,18 +31,78 @@ const FarmerDashboard = () => {
     imagesPreviews: []
   });
 
-  // Load farmer data and products from localStorage
+  // Product management state
+  const [showProductModal, setShowProductModal] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [productForm, setProductForm] = useState({
+    name: '',
+    category: 'Vegetables',
+    price: '',
+    unit: 'kg',
+    quantity: '',
+    description: '',
+    variety: '',
+    organic: false,
+    harvestDate: '',
+    images: [],
+    imagesPreviews: []
+  });
+
+  // Load farmer data, products, and dashboard stats
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    const currentUser = JSON.parse(localStorage.getItem('agrichain-user') || '{}');
+    console.log('FarmerDashboard: Current user:', currentUser);
     setFarmerData(currentUser);
     
-    const storedProducts = JSON.parse(localStorage.getItem(`farmer_products_${currentUser.email}`) || '[]');
-    setProducts(storedProducts);
-    
-    // Load transactions and claims
-    setTransactions(mockTransactions.transactions);
-    const storedClaims = JSON.parse(localStorage.getItem(`farmer_claims_${currentUser.email}`) || '[]');
-    setClaims(storedClaims);
+    const loadDashboardData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        console.log('FarmerDashboard: Starting to load dashboard data...');
+        
+        // Load farmer's products - use a fallback ID if no user email
+        const farmerId = currentUser.email || currentUser.id || 'farmer1@example.com';
+        console.log('FarmerDashboard: Loading products for farmer:', farmerId);
+        
+        const productsResponse = await fetchProducts({ farmer_id: farmerId });
+        console.log('FarmerDashboard: Products response:', productsResponse);
+        if (productsResponse.success) {
+          setProducts(productsResponse.data);
+        }
+
+        // Load transactions
+        console.log('FarmerDashboard: Loading transactions for farmer:', farmerId);
+        const transactionsResponse = await fetchTransactions({ farmer_id: farmerId });
+        console.log('FarmerDashboard: Transactions response:', transactionsResponse);
+        if (transactionsResponse.success) {
+          setTransactions(transactionsResponse.data);
+        }
+
+        // Load dashboard statistics
+        console.log('FarmerDashboard: Loading dashboard stats...');
+        const statsResponse = await fetchDashboardStats(farmerId, 'farmer');
+        console.log('FarmerDashboard: Stats response:', statsResponse);
+        if (statsResponse.success) {
+          setDashboardStats(statsResponse.data);
+        }
+
+        // Load stored claims from localStorage
+        const claimsKey = `farmer_claims_${farmerId}`;
+        const storedClaims = JSON.parse(localStorage.getItem(claimsKey) || '[]');
+        setClaims(storedClaims);
+        
+        console.log('FarmerDashboard: Dashboard loading completed successfully');
+      } catch (err) {
+        console.error('FarmerDashboard: Error loading dashboard:', err);
+        setError(err.message || 'Failed to load dashboard data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    // Always try to load dashboard data, even without user email
+    console.log('FarmerDashboard: Starting dashboard load...');
+    loadDashboardData();
   }, []);
 
   // Claim handlers
@@ -76,7 +140,108 @@ const FarmerDashboard = () => {
     });
   };
 
-  // Calculate Agri Score and metrics
+  // Product management handlers
+  const handleProductSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const farmerId = farmerData.email || farmerData.id || 'farmer1@example.com';
+      const productData = {
+        ...productForm,
+        farmer_id: farmerId,
+        farmer_name: farmerData.name || 'Unknown Farmer',
+        agriScore: Math.floor(Math.random() * 20) + 80, // Random score 80-100
+        location: farmerData.location || 'Unknown Location',
+        price: parseFloat(productForm.price),
+        quantity: parseInt(productForm.quantity)
+      };
+
+      if (editingProduct) {
+        // Update existing product
+        const response = await updateProduct(editingProduct.id, productData);
+        if (response.success) {
+          setProducts(products.map(p => p.id === editingProduct.id ? response.data : p));
+        }
+      } else {
+        // Create new product
+        const response = await postProduct(productData);
+        if (response.success) {
+          setProducts([...products, response.data]);
+        }
+      }
+
+      setShowProductModal(false);
+      setEditingProduct(null);
+      resetProductForm();
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEditProduct = (product) => {
+    setEditingProduct(product);
+    setProductForm({
+      name: product.name || '',
+      category: product.category || 'Vegetables',
+      price: product.price || '',
+      unit: product.unit || 'kg',
+      quantity: product.quantity || '',
+      description: product.description || '',
+      variety: product.variety || '',
+      organic: product.organic || false,
+      harvestDate: product.harvestDate || '',
+      images: product.images || [],
+      imagesPreviews: product.images || []
+    });
+    setShowProductModal(true);
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      try {
+        setProducts(products.filter(p => p.id !== productId));
+        // In a real app, you'd call deleteProduct API
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+  };
+
+  const resetProductForm = () => {
+    setProductForm({
+      name: '',
+      category: 'Vegetables',
+      price: '',
+      unit: 'kg',
+      quantity: '',
+      description: '',
+      variety: '',
+      organic: false,
+      harvestDate: '',
+      images: [],
+      imagesPreviews: []
+    });
+  };
+
+  const handleProductImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setProductForm(prev => ({
+          ...prev,
+          images: [...prev.images, file],
+          imagesPreviews: [...prev.imagesPreviews, e.target.result]
+        }));
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // Calculate Agri Score and metrics using dashboard stats or defaults
   const metrics = {
     timely_delivery: 85,
     quality: 92,
@@ -85,6 +250,27 @@ const FarmerDashboard = () => {
   };
   
   const agriScore = Math.round((metrics.timely_delivery + metrics.quality + metrics.feedback + metrics.sales) / 4);
+
+  // Use dashboard stats if available for better metrics
+  // Ensure transactions is always an array to prevent filter errors
+  const safeTransactions = Array.isArray(transactions) ? transactions : [];
+  const safeProducts = Array.isArray(products) ? products : [];
+  
+  const displayStats = dashboardStats || {
+    totalProducts: safeProducts.length,
+    totalOrders: safeTransactions.length,
+    totalRevenue: safeTransactions.reduce((sum, t) => sum + (t.amount || 0), 0),
+    pendingOrders: safeTransactions.filter(t => t.status === 'pending').length
+  };
+
+  // Generate fallback chart data if dashboard stats don't have monthly data
+  const chartData = dashboardStats?.monthlyStats || [
+    { month: 'Jan', value: 2500 },
+    { month: 'Feb', value: 3200 },
+    { month: 'Mar', value: 2800 },
+    { month: 'Apr', value: 3800 },
+    { month: 'May', value: 3500 }
+  ];
 
   // Government schemes data
   const schemes = [
@@ -218,7 +404,21 @@ const FarmerDashboard = () => {
           </h1>
         </header>
 
-        <div className={styles.contentArea}>
+        {loading ? (
+          <div className={styles.loadingState}>
+            <div className={styles.spinner}></div>
+            <p>Loading dashboard data...</p>
+          </div>
+        ) : error ? (
+          <div className={styles.errorState}>
+            <h3>Failed to load dashboard</h3>
+            <p>{error}</p>
+            <button onClick={() => window.location.reload()} className={styles.retryButton}>
+              Retry
+            </button>
+          </div>
+        ) : (
+          <div className={styles.contentArea}>
           {activeTab === 'overview' && (
             <div className={styles.overviewContent}>
               <div className={styles.statsGrid}>
@@ -303,15 +503,15 @@ const FarmerDashboard = () => {
                 <div className={styles.summaryCards}>
                   <div className={styles.summaryCard}>
                     <h3>Total Transactions</h3>
-                    <p className={styles.summaryValue}>{mockTransactions.summary.totalTransactions}</p>
+                    <p className={styles.summaryValue}>{displayStats.totalOrders}</p>
                   </div>
                   <div className={styles.summaryCard}>
                     <h3>Monthly Revenue</h3>
-                    <p className={styles.summaryValue}>₹{mockTransactions.summary.monthlyTotal.toLocaleString()}</p>
+                    <p className={styles.summaryValue}>₹{displayStats.totalRevenue.toLocaleString()}</p>
                   </div>
                   <div className={styles.summaryCard}>
                     <h3>Products Sold</h3>
-                    <p className={styles.summaryValue}>{mockTransactions.summary.productsSold}</p>
+                    <p className={styles.summaryValue}>{displayStats.totalProducts}</p>
                   </div>
                 </div>
               </div>
@@ -362,17 +562,17 @@ const FarmerDashboard = () => {
                       strokeWidth="3"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      points={mockTransactions.chartData.map((point, index) => 
-                        `${50 + index * 45},${180 - (point.value / 4000) * 160}`
+                      points={chartData.map((point, index) => 
+                        `${50 + index * 45},${180 - (point.revenue || point.value || 0) / 4000 * 160}`
                       ).join(' ')}
                     />
                     
                     {/* Data points */}
-                    {mockTransactions.chartData.map((point, index) => (
+                    {chartData.map((point, index) => (
                       <circle
                         key={index}
                         cx={50 + index * 45}
-                        cy={180 - (point.value / 4000) * 160}
+                        cy={180 - (point.revenue || point.value || 0) / 4000 * 160}
                         r="4"
                         fill="#16a34a"
                         stroke="white"
@@ -381,7 +581,7 @@ const FarmerDashboard = () => {
                     ))}
                     
                     {/* X-axis labels */}
-                    {mockTransactions.chartData.map((point, index) => (
+                    {chartData.map((point, index) => (
                       <text
                         key={index}
                         x={50 + index * 45}
@@ -390,7 +590,7 @@ const FarmerDashboard = () => {
                         fontSize="10"
                         fill="#6b7280"
                       >
-                        {point.day}
+                        {point.month || point.day || `${index + 1}`}
                       </text>
                     ))}
                   </svg>
@@ -401,7 +601,53 @@ const FarmerDashboard = () => {
 
           {activeTab === 'products' && (
             <div className={styles.productsContent}>
-              <p>Products section - {products.length} products</p>
+              <div className={styles.productsHeader}>
+                <h2>My Products</h2>
+                <button 
+                  className={styles.addProductButton}
+                  onClick={() => {
+                    setEditingProduct(null);
+                    resetProductForm();
+                    setShowProductModal(true);
+                  }}
+                >
+                  + Add New Product
+                </button>
+              </div>
+
+              {products.length === 0 ? (
+                <div className={styles.emptyState}>
+                  <h3>No products listed yet</h3>
+                  <p>Start by adding your first product to the marketplace</p>
+                  <button 
+                    className={styles.addProductButton}
+                    onClick={() => {
+                      setEditingProduct(null);
+                      resetProductForm();
+                      setShowProductModal(true);
+                    }}
+                  >
+                    Add Your First Product
+                  </button>
+                </div>
+              ) : (
+                <div className={styles.productsGrid}>
+                  {products.map(product => (
+                    <ProductCard 
+                      key={product.id}
+                      product={{
+                        ...product,
+                        imagePreview: product.image || product.imagePreview,
+                        status: product.status || 'active',
+                        datePosted: product.datePosted || product.createdAt || new Date().toISOString(),
+                        farmerId: product.farmer_id || 'FARMER001'
+                      }}
+                      onEdit={() => handleEditProduct(product)}
+                      onDelete={() => handleDeleteProduct(product.id)}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
@@ -483,6 +729,7 @@ const FarmerDashboard = () => {
             </div>
           )}
         </div>
+        )}
       </main>
 
       {/* Claims Modal */}
@@ -548,6 +795,170 @@ const FarmerDashboard = () => {
               </button>
               <button type="submit" className={styles.submitButton}>
                 Submit Claim
+              </button>
+            </div>
+          </form>
+        </Modal>
+      )}
+      
+      {/* Product Modal */}
+      {showProductModal && (
+        <Modal onClose={() => setShowProductModal(false)}>
+          <form className={styles.productForm} onSubmit={handleProductSubmit}>
+            <h2>{editingProduct ? 'Edit Product' : 'Add New Product'}</h2>
+            
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label htmlFor="productName">Product Name *</label>
+                <input
+                  id="productName"
+                  type="text"
+                  value={productForm.name}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, name: e.target.value }))}
+                  placeholder="e.g., Fresh Organic Tomatoes"
+                  required
+                />
+              </div>
+              
+              <div className={styles.formGroup}>
+                <label htmlFor="productCategory">Category *</label>
+                <select
+                  id="productCategory"
+                  value={productForm.category}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, category: e.target.value }))}
+                  required
+                >
+                  <option value="Vegetables">Vegetables</option>
+                  <option value="Fruits">Fruits</option>
+                  <option value="Grains">Grains</option>
+                  <option value="Dairy">Dairy</option>
+                  <option value="Herbs">Herbs</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label htmlFor="productPrice">Price per Unit *</label>
+                <input
+                  id="productPrice"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={productForm.price}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, price: e.target.value }))}
+                  placeholder="₹0.00"
+                  required
+                />
+              </div>
+              
+              <div className={styles.formGroup}>
+                <label htmlFor="productUnit">Unit</label>
+                <select
+                  id="productUnit"
+                  value={productForm.unit}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, unit: e.target.value }))}
+                >
+                  <option value="kg">kg</option>
+                  <option value="g">g</option>
+                  <option value="l">liter</option>
+                  <option value="piece">piece</option>
+                  <option value="dozen">dozen</option>
+                </select>
+              </div>
+              
+              <div className={styles.formGroup}>
+                <label htmlFor="productQuantity">Available Quantity *</label>
+                <input
+                  id="productQuantity"
+                  type="number"
+                  min="0"
+                  value={productForm.quantity}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, quantity: e.target.value }))}
+                  placeholder="e.g., 100"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label htmlFor="productVariety">Variety</label>
+                <input
+                  id="productVariety"
+                  type="text"
+                  value={productForm.variety}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, variety: e.target.value }))}
+                  placeholder="e.g., Cherry, Roma, Beefsteak"
+                />
+              </div>
+              
+              <div className={styles.formGroup}>
+                <label htmlFor="harvestDate">Harvest Date</label>
+                <input
+                  id="harvestDate"
+                  type="date"
+                  value={productForm.harvestDate}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, harvestDate: e.target.value }))}
+                />
+              </div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label htmlFor="productDescription">Description</label>
+              <textarea
+                id="productDescription"
+                value={productForm.description}
+                onChange={(e) => setProductForm(prev => ({ ...prev, description: e.target.value }))}
+                placeholder="Describe your product, growing methods, quality, etc."
+                rows="3"
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.checkboxLabel}>
+                <input
+                  type="checkbox"
+                  checked={productForm.organic}
+                  onChange={(e) => setProductForm(prev => ({ ...prev, organic: e.target.checked }))}
+                />
+                Certified Organic
+              </label>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label htmlFor="productImages">Product Images</label>
+              <input
+                id="productImages"
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={handleProductImageChange}
+              />
+              {productForm.imagesPreviews.length > 0 && (
+                <div className={styles.productImagePreviews}>
+                  {productForm.imagesPreviews.map((img, idx) => (
+                    <img key={idx} src={img} alt={`Product ${idx + 1}`} />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className={styles.formActions}>
+              <button 
+                type="button" 
+                className={styles.cancelButton}
+                onClick={() => {
+                  setShowProductModal(false);
+                  setEditingProduct(null);
+                  resetProductForm();
+                }}
+              >
+                Cancel
+              </button>
+              <button type="submit" className={styles.submitButton} disabled={loading}>
+                {loading ? 'Saving...' : (editingProduct ? 'Update Product' : 'Add Product')}
               </button>
             </div>
           </form>

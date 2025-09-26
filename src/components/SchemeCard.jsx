@@ -94,7 +94,7 @@ const SchemeCard = ({ scheme, onApply, farmerData }) => {
           {isApplying ? 'Applying...' : scheme.status === 'applied' ? 'Applied' : 'Apply Now'}
         </button>
         <button className={styles.learnMoreButton}>
-          Learn More
+          <span>Learn More</span>
         </button>
       </div>
     </div>

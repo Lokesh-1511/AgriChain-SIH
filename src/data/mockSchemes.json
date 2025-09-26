@@ -1,0 +1,312 @@
+{
+  "schemes": [
+    {
+      "id": "scheme-001",
+      "title": "PM-KISAN Direct Benefit Transfer",
+      "shortTitle": "PM-KISAN",
+      "description": "Under this scheme, financial assistance of ₹6000 per year is provided to eligible farmer families in three equal installments of ₹2000 each.",
+      "category": "Financial Support",
+      "eligibility": [
+        "All landholding farmer families",
+        "Must have cultivable land records",
+        "Aadhaar card mandatory",
+        "Bank account linked to Aadhaar"
+      ],
+      "benefits": [
+        "₹6000 per year direct cash transfer",
+        "Three equal installments of ₹2000",
+        "Direct bank transfer",
+        "No intermediary involvement"
+      ],
+      "applicationProcess": [
+        "Register on PM-KISAN portal",
+        "Upload land documents",
+        "Aadhaar verification",
+        "Bank account verification",
+        "Application review by authorities"
+      ],
+      "documents": [
+        "Aadhaar Card",
+        "Bank Account Details",
+        "Land Ownership Documents",
+        "Mobile Number"
+      ],
+      "amount": "₹6,000 per year",
+      "duration": "Ongoing",
+      "launchDate": "2019-02-24",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "website": "https://pmkisan.gov.in",
+      "helpline": "155261",
+      "status": "Active",
+      "beneficiaries": "12+ crore farmers",
+      "applicationDeadline": "Open throughout the year",
+      "disbursementSchedule": "April-July, August-November, December-March",
+      "tags": ["financial", "direct-benefit", "cash-transfer", "central-scheme"]
+    },
+    {
+      "id": "scheme-002",
+      "title": "Pradhan Mantri Fasal Bima Yojana",
+      "shortTitle": "PMFBY",
+      "description": "Crop insurance scheme providing financial support to farmers suffering crop loss/damage arising due to unforeseen events.",
+      "category": "Insurance",
+      "eligibility": [
+        "All farmers growing notified crops",
+        "Sharecroppers and tenant farmers",
+        "Must have insurable interest in crop",
+        "Application within cutoff date"
+      ],
+      "benefits": [
+        "Comprehensive risk coverage",
+        "Low premium rates (1.5-5% of sum insured)",
+        "Quick settlement of claims",
+        "Technology-enabled claim assessment"
+      ],
+      "applicationProcess": [
+        "Visit nearest bank branch or CSC",
+        "Fill crop insurance application",
+        "Submit required documents",
+        "Pay premium amount",
+        "Receive insurance certificate"
+      ],
+      "documents": [
+        "Aadhaar Card",
+        "Bank Account Details",
+        "Land Records",
+        "Sowing Certificate",
+        "Revenue Records"
+      ],
+      "amount": "Based on crop and area",
+      "duration": "Per crop season",
+      "launchDate": "2016-01-13",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "website": "https://pmfby.gov.in",
+      "helpline": "1800-180-1551",
+      "status": "Active",
+      "beneficiaries": "5+ crore farmers",
+      "applicationDeadline": "Before sowing cutoff date",
+      "premiumRates": {
+        "Kharif": "2% of sum insured",
+        "Rabi": "1.5% of sum insured",
+        "Commercial/Horticultural": "5% of sum insured"
+      },
+      "tags": ["insurance", "crop-protection", "risk-management", "central-scheme"]
+    },
+    {
+      "id": "scheme-003",
+      "title": "Soil Health Card Scheme",
+      "shortTitle": "SHC",
+      "description": "Provides soil health cards to farmers which carry crop-wise recommendations of nutrients and fertilizers required for individual farms.",
+      "category": "Agricultural Support",
+      "eligibility": [
+        "All farmers with agricultural land",
+        "Individual and institutional landholders",
+        "Share croppers with valid agreements",
+        "Self-Help Group members"
+      ],
+      "benefits": [
+        "Free soil testing every 2 years",
+        "Customized fertilizer recommendations",
+        "Improved crop productivity",
+        "Reduced input costs",
+        "Better soil health management"
+      ],
+      "applicationProcess": [
+        "Visit nearest soil testing lab",
+        "Submit soil sample with application",
+        "Provide land ownership documents",
+        "Receive soil health card within 30 days",
+        "Follow recommendations for better yield"
+      ],
+      "documents": [
+        "Land Ownership Documents",
+        "Aadhaar Card",
+        "Mobile Number",
+        "Soil Sample (as per guidelines)"
+      ],
+      "amount": "Free service",
+      "duration": "Valid for 2 years",
+      "launchDate": "2015-02-19",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "website": "https://soilhealth.dac.gov.in",
+      "helpline": "1800-180-1551",
+      "status": "Active",
+      "beneficiaries": "18+ crore farmers",
+      "applicationDeadline": "Ongoing",
+      "testingParameters": [
+        "Soil pH",
+        "Electrical Conductivity",
+        "Organic Carbon",
+        "Available Nitrogen",
+        "Available Phosphorus",
+        "Available Potassium",
+        "Micronutrients"
+      ],
+      "tags": ["soil-health", "testing", "fertilizer-recommendation", "central-scheme"]
+    },
+    {
+      "id": "scheme-004",
+      "title": "Paramparagat Krishi Vikas Yojana",
+      "shortTitle": "PKVY",
+      "description": "Promotes organic farming through cluster approach and provides financial assistance for organic inputs, certification, and marketing.",
+      "category": "Organic Farming",
+      "eligibility": [
+        "Groups of farmers (minimum 50)",
+        "Must form clusters of 50 hectares",
+        "Commitment to organic farming for 3 years",
+        "No use of chemical inputs"
+      ],
+      "benefits": [
+        "₹50,000 per hectare over 3 years",
+        "Financial assistance for organic inputs",
+        "Certification support",
+        "Marketing assistance",
+        "Capacity building programs"
+      ],
+      "applicationProcess": [
+        "Form farmer groups (FPO/FIG)",
+        "Submit cluster proposal",
+        "Get approval from implementing agency",
+        "Start organic cultivation",
+        "Receive financial assistance in installments"
+      ],
+      "documents": [
+        "Group Formation Certificate",
+        "Land Records of all farmers",
+        "Aadhaar Cards of members",
+        "Bank Account Details",
+        "Project Proposal"
+      ],
+      "amount": "₹50,000 per hectare",
+      "duration": "3 years",
+      "launchDate": "2015-04-01",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "website": "https://pgsindia-ncof.gov.in",
+      "helpline": "1800-180-1551",
+      "status": "Active",
+      "beneficiaries": "10+ lakh farmers",
+      "applicationDeadline": "As per state notification",
+      "fundingPattern": {
+        "Year 1": "₹20,000 per hectare",
+        "Year 2": "₹15,000 per hectare",
+        "Year 3": "₹15,000 per hectare"
+      },
+      "tags": ["organic-farming", "cluster-approach", "certification", "central-scheme"]
+    },
+    {
+      "id": "scheme-005",
+      "title": "Micro Irrigation Fund",
+      "shortTitle": "MIF",
+      "description": "Provides dedicated irrigation fund for expanding coverage of micro irrigation in the country, facilitating access to water for all farmers.",
+      "category": "Water Management",
+      "eligibility": [
+        "Individual farmers",
+        "Farmer Producer Organizations",
+        "Self-Help Groups",
+        "Joint Liability Groups",
+        "Cooperative societies"
+      ],
+      "benefits": [
+        "Up to 55% subsidy on micro irrigation",
+        "Additional 10% for SC/ST farmers",
+        "Credit facility at concessional rates",
+        "Water saving technology adoption",
+        "Improved crop productivity"
+      ],
+      "applicationProcess": [
+        "Visit nearest agriculture office",
+        "Submit application with land documents",
+        "Get technical approval",
+        "Select approved vendor",
+        "Install system and receive subsidy"
+      ],
+      "documents": [
+        "Land Ownership Documents",
+        "Aadhaar Card",
+        "Bank Account Details",
+        "Water Source Certificate",
+        "Caste Certificate (if applicable)"
+      ],
+      "amount": "Based on area and system type",
+      "duration": "Project-based",
+      "launchDate": "2018-07-01",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "website": "https://pmksy.gov.in",
+      "helpline": "1800-180-1551",
+      "status": "Active",
+      "beneficiaries": "50+ lakh farmers",
+      "applicationDeadline": "As per state schedule",
+      "systemTypes": [
+        "Drip Irrigation",
+        "Sprinkler Irrigation",
+        "Micro Sprinkler",
+        "Fogging System"
+      ],
+      "tags": ["irrigation", "water-conservation", "subsidy", "central-scheme"]
+    },
+    {
+      "id": "scheme-006",
+      "title": "National Agriculture Market",
+      "shortTitle": "e-NAM",
+      "description": "Online trading platform for agricultural commodities providing transparent price discovery and better market access to farmers.",
+      "category": "Market Access",
+      "eligibility": [
+        "All farmers",
+        "Farmer Producer Organizations",
+        "Licensed traders",
+        "Buyers and commission agents"
+      ],
+      "benefits": [
+        "Online trading platform",
+        "Transparent price discovery",
+        "Direct market access",
+        "Reduced transaction costs",
+        "Better price realization"
+      ],
+      "applicationProcess": [
+        "Register on e-NAM portal",
+        "Get farmer ID from mandi",
+        "Upload quality certificates",
+        "List commodities for sale",
+        "Participate in online bidding"
+      ],
+      "documents": [
+        "Aadhaar Card",
+        "Bank Account Details",
+        "Land Records",
+        "Quality Certificates",
+        "Mobile Number"
+      ],
+      "amount": "No fee for farmers",
+      "duration": "Ongoing service",
+      "launchDate": "2016-04-14",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "website": "https://enam.gov.in",
+      "helpline": "1800-270-0224",
+      "status": "Active",
+      "beneficiaries": "1.7+ crore farmers",
+      "applicationDeadline": "Open registration",
+      "marketsCovered": "1000+ mandis across 18 states",
+      "commodities": "175+ agricultural commodities",
+      "tags": ["market-access", "online-trading", "price-discovery", "central-scheme"]
+    }
+  ],
+  "categories": [
+    "Financial Support",
+    "Insurance", 
+    "Agricultural Support",
+    "Organic Farming",
+    "Water Management",
+    "Market Access",
+    "Technology",
+    "Credit & Loans"
+  ],
+  "statistics": {
+    "totalSchemes": 6,
+    "activeSchemes": 6,
+    "totalBeneficiaries": "35+ crore farmers",
+    "totalFunding": "₹2.3 lakh crore annually",
+    "statesCovered": 36,
+    "averageProcessingTime": "30-45 days",
+    "digitalAdoption": "85%"
+  }
+}

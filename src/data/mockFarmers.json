@@ -1,0 +1,254 @@
+{
+  "farmers": [
+    {
+      "id": "farmer-001",
+      "name": "Rajesh Kumar",
+      "email": "rajesh.kumar@agrichain.com",
+      "phone": "+91-9876543210",
+      "location": "Punjab",
+      "address": "Village Khanna, Ludhiana District, Punjab, India",
+      "coordinates": {
+        "lat": 30.7046,
+        "lng": 76.2144
+      },
+      "farmSize": "5.2 acres",
+      "crops": ["Rice", "Wheat", "Cotton", "Sugarcane"],
+      "specialization": "Organic Farming",
+      "experience": "15 years",
+      "agriScore": 92,
+      "certifications": ["Organic", "Non-GMO", "Fair Trade"],
+      "joinedDate": "2020-03-15T08:30:00.000Z",
+      "isVerified": true,
+      "documents": {
+        "aadhaar": "verified",
+        "bankAccount": "verified",
+        "landDocuments": "verified"
+      },
+      "stats": {
+        "totalProducts": 24,
+        "totalSales": 156000,
+        "avgRating": 4.8,
+        "totalOrders": 89,
+        "responseTime": "2 hours"
+      },
+      "bankDetails": {
+        "accountNumber": "****7890",
+        "bankName": "Punjab National Bank",
+        "branch": "Ludhiana Main"
+      },
+      "profileImage": "/images/farmers/rajesh-kumar.jpg",
+      "coverImage": "/images/farms/punjab-farm-1.jpg"
+    },
+    {
+      "id": "farmer-002",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@agrichain.com",
+      "phone": "+91-8765432109",
+      "location": "Maharashtra",
+      "address": "Nashik District, Maharashtra, India",
+      "coordinates": {
+        "lat": 19.9975,
+        "lng": 73.7898
+      },
+      "farmSize": "3.8 acres",
+      "crops": ["Tomatoes", "Onions", "Grapes", "Pomegranates"],
+      "specialization": "Horticulture",
+      "experience": "12 years",
+      "agriScore": 88,
+      "certifications": ["Organic", "Export Quality"],
+      "joinedDate": "2019-08-22T10:15:00.000Z",
+      "isVerified": true,
+      "documents": {
+        "aadhaar": "verified",
+        "bankAccount": "verified",
+        "landDocuments": "verified"
+      },
+      "stats": {
+        "totalProducts": 18,
+        "totalSales": 98000,
+        "avgRating": 4.6,
+        "totalOrders": 67,
+        "responseTime": "3 hours"
+      },
+      "bankDetails": {
+        "accountNumber": "****5432",
+        "bankName": "State Bank of India",
+        "branch": "Nashik Road"
+      },
+      "profileImage": "/images/farmers/priya-sharma.jpg",
+      "coverImage": "/images/farms/maharashtra-farm-1.jpg"
+    },
+    {
+      "id": "farmer-003",
+      "name": "Ganesh Patil",
+      "email": "ganesh.patil@agrichain.com",
+      "phone": "+91-7654321098",
+      "location": "Maharashtra",
+      "address": "Pune District, Maharashtra, India",
+      "coordinates": {
+        "lat": 18.5204,
+        "lng": 73.8567
+      },
+      "farmSize": "7.1 acres",
+      "crops": ["Mangoes", "Coconut", "Cashew", "Spices"],
+      "specialization": "Fruit Cultivation",
+      "experience": "20 years",
+      "agriScore": 95,
+      "certifications": ["Organic", "Export Quality", "GI Tagged"],
+      "joinedDate": "2018-12-10T14:20:00.000Z",
+      "isVerified": true,
+      "documents": {
+        "aadhaar": "verified",
+        "bankAccount": "verified",
+        "landDocuments": "verified"
+      },
+      "stats": {
+        "totalProducts": 32,
+        "totalSales": 245000,
+        "avgRating": 4.9,
+        "totalOrders": 134,
+        "responseTime": "1 hour"
+      },
+      "bankDetails": {
+        "accountNumber": "****9876",
+        "bankName": "HDFC Bank",
+        "branch": "Pune Cantonment"
+      },
+      "profileImage": "/images/farmers/ganesh-patil.jpg",
+      "coverImage": "/images/farms/maharashtra-farm-2.jpg"
+    },
+    {
+      "id": "farmer-004",
+      "name": "Sunita Devi",
+      "email": "sunita.devi@agrichain.com",
+      "phone": "+91-6543210987",
+      "location": "Uttar Pradesh",
+      "address": "Meerut District, Uttar Pradesh, India",
+      "coordinates": {
+        "lat": 28.9845,
+        "lng": 77.7064
+      },
+      "farmSize": "4.5 acres",
+      "crops": ["Potatoes", "Cauliflower", "Peas", "Carrots"],
+      "specialization": "Vegetable Farming",
+      "experience": "10 years",
+      "agriScore": 85,
+      "certifications": ["Pesticide-free", "Local Organic"],
+      "joinedDate": "2021-05-18T09:45:00.000Z",
+      "isVerified": true,
+      "documents": {
+        "aadhaar": "verified",
+        "bankAccount": "verified",
+        "landDocuments": "pending"
+      },
+      "stats": {
+        "totalProducts": 16,
+        "totalSales": 67000,
+        "avgRating": 4.4,
+        "totalOrders": 45,
+        "responseTime": "4 hours"
+      },
+      "bankDetails": {
+        "accountNumber": "****3456",
+        "bankName": "Bank of Baroda",
+        "branch": "Meerut City"
+      },
+      "profileImage": "/images/farmers/sunita-devi.jpg",
+      "coverImage": "/images/farms/up-farm-1.jpg"
+    },
+    {
+      "id": "farmer-005",
+      "name": "Ravi Krishnan",
+      "email": "ravi.krishnan@agrichain.com",
+      "phone": "+91-5432109876",
+      "location": "Tamil Nadu",
+      "address": "Coimbatore District, Tamil Nadu, India",
+      "coordinates": {
+        "lat": 11.0168,
+        "lng": 76.9558
+      },
+      "farmSize": "6.3 acres",
+      "crops": ["Coconut", "Bananas", "Turmeric", "Cardamom"],
+      "specialization": "Spice Cultivation",
+      "experience": "18 years",
+      "agriScore": 91,
+      "certifications": ["Organic", "Fair Trade", "Rainforest Alliance"],
+      "joinedDate": "2019-01-30T11:30:00.000Z",
+      "isVerified": true,
+      "documents": {
+        "aadhaar": "verified",
+        "bankAccount": "verified",
+        "landDocuments": "verified"
+      },
+      "stats": {
+        "totalProducts": 28,
+        "totalSales": 189000,
+        "avgRating": 4.7,
+        "totalOrders": 102,
+        "responseTime": "2 hours"
+      },
+      "bankDetails": {
+        "accountNumber": "****6789",
+        "bankName": "Indian Bank",
+        "branch": "Coimbatore Main"
+      },
+      "profileImage": "/images/farmers/ravi-krishnan.jpg",
+      "coverImage": "/images/farms/tn-farm-1.jpg"
+    },
+    {
+      "id": "farmer-006",
+      "name": "Amit Singh",
+      "email": "amit.singh@agrichain.com",
+      "phone": "+91-4321098765",
+      "location": "Haryana",
+      "address": "Karnal District, Haryana, India",
+      "coordinates": {
+        "lat": 29.6857,
+        "lng": 76.9905
+      },
+      "farmSize": "8.2 acres",
+      "crops": ["Basmati Rice", "Wheat", "Mustard", "Sunflower"],
+      "specialization": "Grain Production",
+      "experience": "22 years",
+      "agriScore": 89,
+      "certifications": ["Basmati GI", "Export Quality", "Organic"],
+      "joinedDate": "2018-07-12T07:15:00.000Z",
+      "isVerified": true,
+      "documents": {
+        "aadhaar": "verified",
+        "bankAccount": "verified",
+        "landDocuments": "verified"
+      },
+      "stats": {
+        "totalProducts": 35,
+        "totalSales": 312000,
+        "avgRating": 4.8,
+        "totalOrders": 178,
+        "responseTime": "1.5 hours"
+      },
+      "bankDetails": {
+        "accountNumber": "****2345",
+        "bankName": "Punjab National Bank",
+        "branch": "Karnal"
+      },
+      "profileImage": "/images/farmers/amit-singh.jpg",
+      "coverImage": "/images/farms/haryana-farm-1.jpg"
+    }
+  ],
+  "statistics": {
+    "totalFarmers": 6,
+    "totalLandArea": "35.1 acres",
+    "avgExperience": "16.2 years",
+    "avgAgriScore": 90,
+    "verificationRate": "100%",
+    "avgResponseTime": "2.2 hours",
+    "topCrops": ["Rice", "Wheat", "Tomatoes", "Mangoes", "Coconut"],
+    "stateDistribution": {
+      "Punjab": 1,
+      "Maharashtra": 2,
+      "Uttar Pradesh": 1,
+      "Tamil Nadu": 1,
+      "Haryana": 1
+    }
+  }
+}

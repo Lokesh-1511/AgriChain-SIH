@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
-import mockProducts from '../data/mockProducts.json';
+import { fetchProducts } from '../utils/fakeApi';
 import styles from '../styles/ConsumerDashboard.module.css';
 import QRPreview from '../components/QRPreview';
 import ChatWidget from '../components/ChatWidget';
@@ -108,16 +108,50 @@ const ConsumerProductCard = ({ product, onShowQR }) => {
 };
 
 const ConsumerDashboard = () => {
-  const [products] = useState(mockProducts.products);
-  const [filteredProducts, setFilteredProducts] = useState(mockProducts.products);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [selectedLocation, setSelectedLocation] = useState('All Locations');
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
   const [showQRModal, setShowQRModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const { cart } = useCart();
   const navigate = useNavigate();
+
+  // Static filter options (in real app, these could be fetched from API)
+  const categories = ['All Categories', 'Vegetables', 'Fruits', 'Grains', 'Dairy', 'Organic'];
+  const locations = ['All Locations', 'Delhi', 'Mumbai', 'Bangalore', 'Pune', 'Chennai', 'Hyderabad'];
+
+  // Load products on component mount
+  useEffect(() => {
+    const loadProducts = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        console.log('ConsumerDashboard: Starting to load products...');
+        const response = await fetchProducts({ limit: 50 });
+        console.log('ConsumerDashboard: Products response:', response);
+        if (response.success) {
+          setProducts(response.data);
+          setFilteredProducts(response.data);
+          console.log('ConsumerDashboard: Products loaded successfully:', response.data.length);
+        } else {
+          setError('Failed to load products');
+        }
+      } catch (err) {
+        console.error('ConsumerDashboard: Error loading products:', err);
+        setError(err.message || 'Failed to load products');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    console.log('ConsumerDashboard: Component mounted, loading products...');
+    loadProducts();
+  }, []);
 
   const handleShowQR = (product) => {
     setSelectedProduct(product);
@@ -131,7 +165,9 @@ const ConsumerDashboard = () => {
 
   // Filter products based on selected filters
   const applyFilters = () => {
-    let filtered = products;
+    // Ensure products is always an array to prevent filter errors
+    const safeProducts = Array.isArray(products) ? products : [];
+    let filtered = safeProducts;
 
     // Category filter
     if (selectedCategory !== 'All Categories') {
@@ -178,7 +214,7 @@ const ConsumerDashboard = () => {
           
           {/* Category Tabs */}
           <div className={styles.categoryTabs}>
-            {mockProducts.categories.map(category => (
+            {categories.map(category => (
               <button
                 key={category}
                 className={`${styles.categoryTab} ${selectedCategory === category ? styles.active : ''}`}
@@ -198,7 +234,7 @@ const ConsumerDashboard = () => {
                 onChange={(e) => setSelectedLocation(e.target.value)}
                 className={styles.locationSelect}
               >
-                {mockProducts.locations.map(location => (
+                {locations.map(location => (
                   <option key={location} value={location}>{location}</option>
                 ))}
               </select>
@@ -234,22 +270,37 @@ const ConsumerDashboard = () => {
       </div>
 
       <main className={styles.productsSection}>
-        <div className={styles.productsGrid}>
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map(product => (
-              <ConsumerProductCard 
-                key={product.id} 
-                product={product} 
-                onShowQR={handleShowQR}
-              />
-            ))
-          ) : (
-            <div className={styles.noProducts}>
-              <h3>No products found</h3>
-              <p>Try adjusting your filters to see more results</p>
-            </div>
-          )}
-        </div>
+        {loading ? (
+          <div className={styles.loadingState}>
+            <div className={styles.spinner}></div>
+            <p>Loading fresh products...</p>
+          </div>
+        ) : error ? (
+          <div className={styles.errorState}>
+            <h3>Failed to load products</h3>
+            <p>{error}</p>
+            <button onClick={() => window.location.reload()} className={styles.retryButton}>
+              Try Again
+            </button>
+          </div>
+        ) : (
+          <div className={styles.productsGrid}>
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map(product => (
+                <ConsumerProductCard 
+                  key={product.id} 
+                  product={product} 
+                  onShowQR={handleShowQR}
+                />
+              ))
+            ) : (
+              <div className={styles.noProducts}>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters to see more results</p>
+              </div>
+            )}
+          </div>
+        )}
       </main>
       
       {/* QR Modal */}

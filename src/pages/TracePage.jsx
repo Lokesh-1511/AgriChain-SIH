@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './TracePage.module.css';
-import mockTrace from '../data/mockTrace.json';
+import { fetchTraceData } from '../utils/fakeApi';
 
 const TracePage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
+  // Cache busting comment - 2025-09-26
   const [traceData, setTraceData] = useState(null);
   const [activeStep, setActiveStep] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,18 +14,15 @@ const TracePage = () => {
   const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   useEffect(() => {
-    // Simulate API call to fetch trace data
-    const fetchTraceData = async () => {
+    // Fetch trace data using fake API
+    const loadTraceData = async () => {
       setLoading(true);
       try {
-        // In real app, this would be an API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        const product = mockTrace.products[productId];
-        if (product) {
-          setTraceData(product);
+        const response = await fetchTraceData(productId);
+        if (response.success) {
+          setTraceData(response.data);
         } else {
-          console.error('Product not found');
+          console.error('Failed to fetch trace data');
         }
       } catch (error) {
         console.error('Error fetching trace data:', error);
@@ -34,7 +32,7 @@ const TracePage = () => {
     };
 
     if (productId) {
-      fetchTraceData();
+      loadTraceData();
     }
   }, [productId]);
 
