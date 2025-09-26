@@ -3,9 +3,11 @@ import { useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
 import mockProducts from '../data/mockProducts.json';
 import styles from '../styles/ConsumerDashboard.module.css';
+import QRPreview from '../components/QRPreview';
 
-const ConsumerProductCard = ({ product }) => {
+const ConsumerProductCard = ({ product, onShowQR }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [addingToCart, setAddingToCart] = useState(false);
 
   const handleAddToCart = async () => {
@@ -14,6 +16,15 @@ const ConsumerProductCard = ({ product }) => {
     await new Promise(resolve => setTimeout(resolve, 500));
     addToCart(product);
     setAddingToCart(false);
+  };
+
+  const handleTrace = () => {
+    navigate(`/trace/${product.id}`);
+  };
+
+  const handleQRPreview = (e) => {
+    e.stopPropagation();
+    onShowQR(product);
   };
 
   const getAgriScoreColor = (score) => {
@@ -76,8 +87,18 @@ const ConsumerProductCard = ({ product }) => {
           >
             {addingToCart ? 'Adding...' : 'Add to Cart'}
           </button>
-          <button className={styles.traceBtn}>
-            Trace
+          <button 
+            className={styles.traceBtn}
+            onClick={handleTrace}
+          >
+            👁️ Trace
+          </button>
+          <button 
+            className={styles.qrBtn}
+            onClick={handleQRPreview}
+            title="View QR Code"
+          >
+            📱 QR
           </button>
         </div>
       </div>
@@ -91,9 +112,21 @@ const ConsumerDashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [selectedLocation, setSelectedLocation] = useState('All Locations');
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
+  const [showQRModal, setShowQRModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const { cart } = useCart();
   const navigate = useNavigate();
+
+  const handleShowQR = (product) => {
+    setSelectedProduct(product);
+    setShowQRModal(true);
+  };
+
+  const handleCloseQR = () => {
+    setShowQRModal(false);
+    setSelectedProduct(null);
+  };
 
   // Filter products based on selected filters
   const applyFilters = () => {
@@ -203,7 +236,11 @@ const ConsumerDashboard = () => {
         <div className={styles.productsGrid}>
           {filteredProducts.length > 0 ? (
             filteredProducts.map(product => (
-              <ConsumerProductCard key={product.id} product={product} />
+              <ConsumerProductCard 
+                key={product.id} 
+                product={product} 
+                onShowQR={handleShowQR}
+              />
             ))
           ) : (
             <div className={styles.noProducts}>
@@ -213,6 +250,15 @@ const ConsumerDashboard = () => {
           )}
         </div>
       </main>
+      
+      {/* QR Modal */}
+      {showQRModal && selectedProduct && (
+        <QRPreview
+          productId={selectedProduct.id}
+          productName={selectedProduct.name}
+          onClose={handleCloseQR}
+        />
+      )}
     </div>
   );
 };

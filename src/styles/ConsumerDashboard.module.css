@@ -395,6 +395,29 @@
   box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
 }
 
+.qrBtn {
+  background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  min-width: 60px;
+}
+
+.qrBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
+}
+
+.qrBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
+}
+
 .noProducts {
   grid-column: 1 / -1;
   text-align: center;

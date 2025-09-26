@@ -1,0 +1,369 @@
+{
+  "products": {
+    "1": {
+      "id": "1",
+      "name": "Organic Basmati Rice",
+      "farmerName": "Rajesh Kumar",
+      "farmerAddress": "Village Khanna, Punjab",
+      "agriScore": 85,
+      "batchNumber": "OR-2024-1201",
+      "qrCode": "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=trace-product-1",
+      "blockchain": {
+        "contractAddress": "0x742d35cc671c0a9f9e3c8e1aa2e91b5a3c7f8d2e",
+        "mainTxHash": "0x8f47c3b2d1e5a6f9c2b4d7e8f1a3b5c6d9e2f4a7b8c1d3e5",
+        "blockNumber": 15234567,
+        "gasUsed": 124500,
+        "confirmations": 247
+      },
+      "timeline": [
+        {
+          "id": "farm",
+          "stage": "Farm",
+          "title": "Harvested",
+          "description": "Organic basmati rice harvested using traditional methods",
+          "status": "completed",
+          "timestamp": "2024-11-15T08:30:00.000Z",
+          "location": {
+            "name": "Kumar Organic Farm",
+            "address": "Village Khanna, Punjab, India",
+            "coordinates": {
+              "lat": 30.7046,
+              "lng": 76.2144
+            }
+          },
+          "details": {
+            "weather": "Sunny, 28°C",
+            "soilCondition": "Well-drained, pH 6.8",
+            "harvestMethod": "Manual harvesting",
+            "quality": "Grade A",
+            "certifications": ["Organic", "Non-GMO"],
+            "inspector": "Punjab Agricultural Board"
+          },
+          "blockchain": {
+            "txHash": "0x1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f",
+            "blockNumber": 15234401,
+            "timestamp": "2024-11-15T08:35:12.000Z"
+          },
+          "images": [
+            "/images/trace/harvest-1.jpg",
+            "/images/trace/harvest-2.jpg"
+          ]
+        },
+        {
+          "id": "processing",
+          "stage": "Processing",
+          "title": "Cleaned & Packaged",
+          "description": "Rice cleaned, sorted, and packaged under hygienic conditions",
+          "status": "completed",
+          "timestamp": "2024-11-16T14:20:00.000Z",
+          "location": {
+            "name": "Punjab Rice Processing Unit",
+            "address": "Industrial Area, Ludhiana, Punjab",
+            "coordinates": {
+              "lat": 30.9010,
+              "lng": 75.8573
+            }
+          },
+          "details": {
+            "processType": "Steam cleaning & sorting",
+            "packagingDate": "2024-11-16",
+            "batchSize": "500 kg",
+            "qualityChecks": ["Moisture content: 12%", "Impurities: <0.1%", "Broken grains: <2%"],
+            "packagingMaterial": "Food-grade jute bags",
+            "supervisor": "Manjeet Singh",
+            "licenseNumber": "FBO-PB-2024-001234"
+          },
+          "blockchain": {
+            "txHash": "0x2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f3g",
+            "blockNumber": 15234445,
+            "timestamp": "2024-11-16T14:25:33.000Z"
+          },
+          "images": [
+            "/images/trace/processing-1.jpg",
+            "/images/trace/processing-2.jpg"
+          ]
+        },
+        {
+          "id": "dispatch",
+          "stage": "Dispatch",
+          "title": "Shipped from Facility",
+          "description": "Product dispatched to distribution center",
+          "status": "completed",
+          "timestamp": "2024-11-17T09:15:00.000Z",
+          "location": {
+            "name": "Punjab Distribution Center",
+            "address": "Transport Hub, Ludhiana, Punjab",
+            "coordinates": {
+              "lat": 30.8875,
+              "lng": 75.8421
+            }
+          },
+          "details": {
+            "vehicleNumber": "PB-07-AB-1234",
+            "driverName": "Harpreet Singh",
+            "driverLicense": "DL-03-2019-0012345",
+            "loadWeight": "2.5 tons",
+            "temperature": "Ambient (25°C)",
+            "departureTime": "09:15 AM",
+            "estimatedArrival": "6:00 PM same day",
+            "routeCode": "PB-DL-001"
+          },
+          "blockchain": {
+            "txHash": "0x3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f3g4h",
+            "blockNumber": 15234489,
+            "timestamp": "2024-11-17T09:18:45.000Z"
+          },
+          "images": [
+            "/images/trace/dispatch-1.jpg"
+          ]
+        },
+        {
+          "id": "transit",
+          "stage": "Transit",
+          "title": "In Transit",
+          "description": "Product being transported to retail distribution",
+          "status": "completed",
+          "timestamp": "2024-11-17T18:45:00.000Z",
+          "location": {
+            "name": "Delhi Distribution Hub",
+            "address": "Sector 58, Gurgaon, Haryana",
+            "coordinates": {
+              "lat": 28.4595,
+              "lng": 77.0266
+            }
+          },
+          "details": {
+            "currentLocation": "Delhi Distribution Hub",
+            "transitTime": "9 hours 30 minutes",
+            "handlingConditions": "Dry storage, room temperature",
+            "inspectionStatus": "Passed quality check",
+            "nextDestination": "Retail stores in Delhi NCR",
+            "trackingNumber": "TRK-2024-115789",
+            "receivedBy": "Warehouse Manager - Vikash Gupta"
+          },
+          "blockchain": {
+            "txHash": "0x4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f3g4h5i",
+            "blockNumber": 15234523,
+            "timestamp": "2024-11-17T18:50:21.000Z"
+          },
+          "images": [
+            "/images/trace/transit-1.jpg"
+          ]
+        },
+        {
+          "id": "delivered",
+          "stage": "Delivered",
+          "title": "Available for Sale",
+          "description": "Product delivered to retail outlets and available for consumers",
+          "status": "completed",
+          "timestamp": "2024-11-18T11:30:00.000Z",
+          "location": {
+            "name": "AgriChain Marketplace",
+            "address": "Online Platform",
+            "coordinates": {
+              "lat": 28.7041,
+              "lng": 77.1025
+            }
+          },
+          "details": {
+            "deliveryStatus": "Successfully delivered",
+            "retailPartners": ["AgriChain Marketplace", "Fresh Direct", "Organic Bazaar"],
+            "finalQualityCheck": "Grade A - Excellent",
+            "shelfLife": "12 months from packaging",
+            "storageInstructions": "Store in cool, dry place",
+            "consumerPrice": "₹120 per kg",
+            "availableQuantity": "500 kg"
+          },
+          "blockchain": {
+            "txHash": "0x5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f3g4h5i6j",
+            "blockNumber": 15234567,
+            "timestamp": "2024-11-18T11:35:44.000Z"
+          },
+          "images": [
+            "/images/trace/delivered-1.jpg"
+          ]
+        }
+      ],
+      "certificates": [
+        {
+          "name": "Organic Certification",
+          "issuer": "Indian Organic Certification Agency",
+          "number": "IOCA/ORG/2024/1234",
+          "validUntil": "2025-11-15",
+          "documentUrl": "/certificates/organic-cert-1.pdf"
+        },
+        {
+          "name": "Non-GMO Verification",
+          "issuer": "Non-GMO Project",
+          "number": "NGP-IN-2024-5678",
+          "validUntil": "2025-11-15",
+          "documentUrl": "/certificates/non-gmo-1.pdf"
+        }
+      ],
+      "sustainability": {
+        "carbonFootprint": "2.3 kg CO2 per kg rice",
+        "waterUsage": "1,200 liters per kg",
+        "sustainabilityScore": 8.5,
+        "environmentalImpact": "Low",
+        "practices": [
+          "Organic farming methods",
+          "Water-efficient irrigation",
+          "Renewable energy in processing",
+          "Minimal packaging materials"
+        ]
+      }
+    },
+    "2": {
+      "id": "2",
+      "name": "Fresh Tomatoes",
+      "farmerName": "Priya Sharma",
+      "farmerAddress": "Nashik, Maharashtra",
+      "agriScore": 92,
+      "batchNumber": "TM-2024-1218",
+      "qrCode": "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=trace-product-2",
+      "blockchain": {
+        "contractAddress": "0x851f46d42c3a4b7e8f2d1a5c9e6b3f7d4a8c2e5b",
+        "mainTxHash": "0x7c8f2e5b4a1d9c6e3f8b2a5d7e1c4f9b6a3d8e2c5f7b1a4e9c6d3f8b2a5d7e1c",
+        "blockNumber": 15234789,
+        "gasUsed": 98750,
+        "confirmations": 183
+      },
+      "timeline": [
+        {
+          "id": "farm",
+          "stage": "Farm",
+          "title": "Harvested",
+          "description": "Fresh tomatoes harvested at peak ripeness",
+          "status": "completed",
+          "timestamp": "2024-12-18T06:00:00.000Z",
+          "location": {
+            "name": "Sharma Vegetable Farm",
+            "address": "Nashik District, Maharashtra, India",
+            "coordinates": {
+              "lat": 19.9975,
+              "lng": 73.7898
+            }
+          },
+          "details": {
+            "weather": "Clear, 24°C",
+            "harvestTime": "Early morning",
+            "ripeness": "95% - Perfect for transport",
+            "variety": "Hybrid Cherry Tomatoes",
+            "pesticides": "None - Organic cultivation",
+            "irrigation": "Drip irrigation system"
+          },
+          "blockchain": {
+            "txHash": "0xa1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2",
+            "blockNumber": 15234701,
+            "timestamp": "2024-12-18T06:05:22.000Z"
+          }
+        },
+        {
+          "id": "processing",
+          "stage": "Processing",
+          "title": "Sorted & Packed",
+          "description": "Tomatoes sorted by quality and packed for freshness",
+          "status": "completed",
+          "timestamp": "2024-12-18T10:30:00.000Z",
+          "location": {
+            "name": "Maharashtra Fresh Produce Center",
+            "address": "Nashik Processing Zone, Maharashtra",
+            "coordinates": {
+              "lat": 19.9665,
+              "lng": 73.7730
+            }
+          },
+          "details": {
+            "sortingGrade": "Premium A+",
+            "packagingType": "Ventilated plastic crates",
+            "temperatureControlled": "Yes - 4°C",
+            "qualityTests": ["Size uniformity", "Color consistency", "Firmness test"],
+            "rejectionRate": "3% - Industry best"
+          },
+          "blockchain": {
+            "txHash": "0xb2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3",
+            "blockNumber": 15234734,
+            "timestamp": "2024-12-18T10:35:15.000Z"
+          }
+        },
+        {
+          "id": "dispatch",
+          "stage": "Dispatch",
+          "title": "Cold Chain Transport",
+          "description": "Dispatched in refrigerated vehicle for freshness",
+          "status": "completed",
+          "timestamp": "2024-12-18T14:15:00.000Z",
+          "location": {
+            "name": "Cold Storage Depot",
+            "address": "Mumbai Highway, Maharashtra",
+            "coordinates": {
+              "lat": 19.9200,
+              "lng": 73.8000
+            }
+          },
+          "details": {
+            "vehicleType": "Refrigerated truck",
+            "temperature": "4°C maintained",
+            "humidity": "85-90% RH",
+            "transitTime": "Expected 6 hours",
+            "driverContact": "+91 98765 43210"
+          },
+          "blockchain": {
+            "txHash": "0xc3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4",
+            "blockNumber": 15234756,
+            "timestamp": "2024-12-18T14:18:33.000Z"
+          }
+        },
+        {
+          "id": "transit",
+          "stage": "Transit",
+          "title": "En Route",
+          "description": "Being transported to distribution centers",
+          "status": "active",
+          "timestamp": "2024-12-18T20:30:00.000Z",
+          "location": {
+            "name": "Mumbai Distribution Center",
+            "address": "Andheri Logistics Hub, Mumbai",
+            "coordinates": {
+              "lat": 19.0760,
+              "lng": 72.8777
+            }
+          },
+          "details": {
+            "currentStatus": "In transit - Temperature maintained",
+            "estimatedArrival": "Tomorrow 8:00 AM",
+            "gpsTracking": "Live tracking available",
+            "temperatureLog": "Consistently at 4°C"
+          },
+          "blockchain": {
+            "txHash": "0xd4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5",
+            "blockNumber": 15234789,
+            "timestamp": "2024-12-18T20:32:44.000Z"
+          }
+        },
+        {
+          "id": "delivered",
+          "stage": "Delivered",
+          "title": "Ready for Sale",
+          "description": "Available for immediate purchase",
+          "status": "pending",
+          "timestamp": null,
+          "location": {
+            "name": "AgriChain Fresh Market",
+            "address": "Multiple retail locations",
+            "coordinates": {
+              "lat": 19.0760,
+              "lng": 72.8777
+            }
+          },
+          "details": {
+            "expectedDelivery": "2024-12-19T08:00:00.000Z",
+            "retailPrice": "₹40 per kg",
+            "shelfLife": "7 days from harvest",
+            "storageTemp": "4-8°C recommended"
+          }
+        }
+      ]
+    }
+  }
+}
