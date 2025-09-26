@@ -186,6 +186,12 @@ const FarmerLogin = () => {
             />
 
             <div className={styles.formActions}>
+              <div className={styles.forgotPasswordLink}>
+                <Link to="/farmer/forgot-password" className={styles.forgotLink}>
+                  Forgot Password?
+                </Link>
+              </div>
+              
               <button
                 type="submit"
                 disabled={isSubmitting}

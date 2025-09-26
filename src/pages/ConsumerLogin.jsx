@@ -48,12 +48,13 @@ const ConsumerLogin = () => {
     setIsLoading(true);
     
     try {
+      console.log('Consumer login attempt:', { email: formData.email, password: formData.password });
+      
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Create test user if it doesn't exist
-      let storedUser = localStorage.getItem('agrichain-user');
-      if (!storedUser && formData.email === 'consumer@test.com') {
+      // Handle test consumer login
+      if (formData.email === 'consumer@test.com' && formData.password === 'password123') {
         const testConsumer = {
           name: 'Test Consumer',
           email: 'consumer@test.com',
@@ -64,33 +65,40 @@ const ConsumerLogin = () => {
           id: 'test-consumer-1',
           registeredAt: new Date().toISOString()
         };
+        
+        // Store the consumer user data
         localStorage.setItem('agrichain-user', JSON.stringify(testConsumer));
-        storedUser = JSON.stringify(testConsumer);
+        localStorage.setItem('agrichain-auth-token', 'mock-consumer-jwt-token');
+        localStorage.setItem('currentUser', JSON.stringify(testConsumer));
+        
+        console.log('Consumer login successful:', testConsumer);
+        alert('Login successful! Welcome back, Test Consumer');
+        navigate('/consumer/dashboard');
+        setIsLoading(false);
+        return;
       }
       
-      // Mock authentication - in real app, this would be an API call
+      // Check for existing registered user
+      const storedUser = localStorage.getItem('agrichain-user');
       if (storedUser) {
         const userData = JSON.parse(storedUser);
-        if (userData.email === formData.email && userData.password === formData.password) {
+        if (userData.email === formData.email && userData.password === formData.password && userData.userType === 'consumer') {
           // Successful login - store as currentUser for dashboard access
           localStorage.setItem('agrichain-auth-token', 'mock-jwt-token');
-          localStorage.setItem('currentUser', JSON.stringify({
-            ...userData,
-            userType: 'consumer'
-          }));
+          localStorage.setItem('currentUser', JSON.stringify(userData));
           
           alert('Login successful! Welcome back, ' + userData.name);
-          navigate('/consumer'); // Redirect to consumer dashboard
+          navigate('/consumer/dashboard');
         } else {
           setErrors({ 
-            email: 'Invalid email or password', 
-            password: 'Invalid email or password' 
+            email: 'Invalid email, password, or account type', 
+            password: 'Invalid email, password, or account type' 
           });
         }
       } else {
         setErrors({ 
-          email: 'Account not found. Please register first.',
-          password: 'Account not found. Please register first.'
+          email: 'Invalid email or password. Use consumer@test.com / password123 for demo.',
+          password: 'Invalid email or password. Use consumer@test.com / password123 for demo.'
         });
       }
     } catch (error) {
@@ -151,16 +159,53 @@ const ConsumerLogin = () => {
               required
             />
             
-            <button
-              type="submit"
-              className={styles.submitButton}
-              disabled={isLoading}
-            >
-              {isLoading ? 'Signing In...' : 'Sign In'}
-            </button>
+            <div className={styles.formActions}>
+              <div className={styles.forgotPasswordLink}>
+                <Link to="/consumer/forgot-password" className={styles.forgotLink}>
+                  Forgot Password?
+                </Link>
+              </div>
+              
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Signing In...' : 'Sign In'}
+              </button>
+            </div>
           </form>
           
           <div className={styles.loginFooter}>
+            <div className={styles.debugSection}>
+              <p><strong>Debug Info:</strong></p>
+              <p>Email: {formData.email}</p>
+              <p>Password: {formData.password}</p>
+              <button 
+                type="button" 
+                onClick={() => {
+                  console.log('Current form data:', formData);
+                  console.log('LocalStorage:', {
+                    user: localStorage.getItem('agrichain-user'),
+                    currentUser: localStorage.getItem('currentUser'),
+                    token: localStorage.getItem('agrichain-auth-token')
+                  });
+                }}
+                className={styles.debugButton}
+              >
+                Debug Console
+              </button>
+              <button 
+                type="button" 
+                onClick={() => {
+                  localStorage.clear();
+                  alert('LocalStorage cleared!');
+                }}
+                className={styles.debugButton}
+              >
+                Clear Storage
+              </button>
+            </div>
             <p>
               Don't have a consumer account?{' '}
               <Link to="/consumer/register" className={styles.registerLink}>
