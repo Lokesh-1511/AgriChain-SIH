@@ -1,0 +1,172 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Organic Basmati Rice",
+      "category": "Grains",
+      "price": 120,
+      "unit": "kg",
+      "quantity": 500,
+      "image": "/images/basmati-rice.jpg",
+      "farmer": {
+        "name": "Rajesh Kumar",
+        "location": "Punjab",
+        "agriScore": 85
+      },
+      "location": "Punjab",
+      "agriScore": 85,
+      "description": "Premium quality organic basmati rice grown using traditional methods",
+      "harvestDate": "2024-11-15",
+      "certifications": ["Organic", "Non-GMO"]
+    },
+    {
+      "id": 2,
+      "name": "Fresh Tomatoes",
+      "category": "Vegetables",
+      "price": 40,
+      "unit": "kg",
+      "quantity": 200,
+      "image": "/images/tomatoes.jpg",
+      "farmer": {
+        "name": "Priya Sharma",
+        "location": "Maharashtra",
+        "agriScore": 92
+      },
+      "location": "Maharashtra",
+      "agriScore": 92,
+      "description": "Fresh, juicy tomatoes harvested this morning",
+      "harvestDate": "2024-12-18",
+      "certifications": ["Pesticide-free"]
+    },
+    {
+      "id": 3,
+      "name": "Alphonso Mangoes",
+      "category": "Fruits",
+      "price": 300,
+      "unit": "dozen",
+      "quantity": 50,
+      "image": "/images/alphonso-mangoes.jpg",
+      "farmer": {
+        "name": "Ganesh Patil",
+        "location": "Maharashtra",
+        "agriScore": 88
+      },
+      "location": "Maharashtra",
+      "agriScore": 88,
+      "description": "Premium Alphonso mangoes, king of fruits",
+      "harvestDate": "2024-12-10",
+      "certifications": ["Export Quality", "GI Tagged"]
+    },
+    {
+      "id": 4,
+      "name": "Organic Wheat",
+      "category": "Grains",
+      "price": 35,
+      "unit": "kg",
+      "quantity": 1000,
+      "image": "/images/wheat.jpg",
+      "farmer": {
+        "name": "Suresh Singh",
+        "location": "Haryana",
+        "agriScore": 79
+      },
+      "location": "Haryana",
+      "agriScore": 79,
+      "description": "High-quality organic wheat flour perfect for making rotis",
+      "harvestDate": "2024-11-20",
+      "certifications": ["Organic", "High Protein"]
+    },
+    {
+      "id": 5,
+      "name": "Green Capsicum",
+      "category": "Vegetables",
+      "price": 60,
+      "unit": "kg",
+      "quantity": 150,
+      "image": "/images/capsicum.jpg",
+      "farmer": {
+        "name": "Meera Devi",
+        "location": "Karnataka",
+        "agriScore": 90
+      },
+      "location": "Karnataka",
+      "agriScore": 90,
+      "description": "Fresh green capsicum, perfect for cooking",
+      "harvestDate": "2024-12-17",
+      "certifications": ["Pesticide-free", "Farm Fresh"]
+    },
+    {
+      "id": 6,
+      "name": "Kerala Bananas",
+      "category": "Fruits",
+      "price": 45,
+      "unit": "dozen",
+      "quantity": 80,
+      "image": "/images/bananas.jpg",
+      "farmer": {
+        "name": "Ravi Nair",
+        "location": "Kerala",
+        "agriScore": 86
+      },
+      "location": "Kerala",
+      "agriScore": 86,
+      "description": "Sweet and nutritious bananas from Kerala",
+      "harvestDate": "2024-12-19",
+      "certifications": ["Naturally Ripened"]
+    },
+    {
+      "id": 7,
+      "name": "Red Onions",
+      "category": "Vegetables",
+      "price": 25,
+      "unit": "kg",
+      "quantity": 300,
+      "image": "/images/onions.jpg",
+      "farmer": {
+        "name": "Lakshmi Reddy",
+        "location": "Andhra Pradesh",
+        "agriScore": 83
+      },
+      "location": "Andhra Pradesh",
+      "agriScore": 83,
+      "description": "Fresh red onions with excellent storage quality",
+      "harvestDate": "2024-12-05",
+      "certifications": ["Export Grade"]
+    },
+    {
+      "id": 8,
+      "name": "Fresh Apples",
+      "category": "Fruits",
+      "price": 150,
+      "unit": "kg",
+      "quantity": 120,
+      "image": "/images/apples.jpg",
+      "farmer": {
+        "name": "Narendra Thakur",
+        "location": "Himachal Pradesh",
+        "agriScore": 94
+      },
+      "location": "Himachal Pradesh",
+      "agriScore": 94,
+      "description": "Crisp and sweet apples from the mountains",
+      "harvestDate": "2024-11-30",
+      "certifications": ["Premium Grade", "Cold Storage"]
+    }
+  ],
+  "locations": [
+    "All Locations",
+    "Punjab",
+    "Maharashtra", 
+    "Haryana",
+    "Karnataka",
+    "Kerala",
+    "Andhra Pradesh",
+    "Himachal Pradesh"
+  ],
+  "categories": [
+    "All Categories",
+    "Vegetables",
+    "Fruits", 
+    "Grains"
+  ]
+}

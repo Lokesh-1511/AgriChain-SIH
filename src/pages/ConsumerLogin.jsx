@@ -9,8 +9,8 @@ const ConsumerLogin = () => {
   const { t } = useLanguage();
   
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'consumer@test.com',
+    password: 'password123',
   });
   
   const [errors, setErrors] = useState({});
@@ -51,8 +51,22 @@ const ConsumerLogin = () => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Get stored consumer data
-      const storedConsumers = JSON.parse(localStorage.getItem('consumers') || '[]');
+      // Create test user if it doesn't exist
+      let storedConsumers = JSON.parse(localStorage.getItem('consumers') || '[]');
+      if (storedConsumers.length === 0 && formData.email === 'consumer@test.com') {
+        const testConsumer = {
+          name: 'Test Consumer',
+          email: 'consumer@test.com',
+          password: 'password123',
+          phone: '9876543210',
+          address: '123 Consumer Street',
+          userType: 'consumer',
+          id: 'test-consumer-1',
+          registeredAt: new Date().toISOString()
+        };
+        storedConsumers = [testConsumer];
+        localStorage.setItem('consumers', JSON.stringify(storedConsumers));
+      }
       
       // Find matching consumer
       const consumer = storedConsumers.find(c => 
@@ -68,7 +82,7 @@ const ConsumerLogin = () => {
         }));
         
         alert('Login successful! Welcome back, ' + consumer.name);
-        navigate('/'); // Redirect to dashboard or home
+        navigate('/consumer'); // Redirect to consumer dashboard
       } else {
         setErrors({ 
           email: 'Invalid email or password', 

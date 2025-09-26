@@ -1,0 +1,506 @@
+.orderTracking {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 2rem 0;
+}
+
+.trackingContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.orderNotFound {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.orderNotFound button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.orderNotFound button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.orderHeader {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.orderInfo h1 {
+  margin: 0 0 0.5rem;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.orderInfo p {
+  margin: 0 0 1rem;
+  color: #666;
+}
+
+.orderStatus {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.statusBadge {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.statusBadge.confirmed {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.orderValue {
+  text-align: right;
+}
+
+.totalAmount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.orderValue p {
+  margin: 0.5rem 0 0;
+  color: #666;
+}
+
+.trackingProgress {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.trackingProgress h2 {
+  margin: 0 0 2rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.progressSteps {
+  position: relative;
+}
+
+.progressStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.progressStep.completed .stepIcon {
+  background: #4CAF50;
+  color: white;
+  animation: checkmark 0.5s ease;
+}
+
+.progressStep.active .stepIcon {
+  background: #667eea;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+.progressStep.pending .stepIcon {
+  background: #e0e0e0;
+  color: #666;
+}
+
+@keyframes checkmark {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+  }
+}
+
+.stepIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.stepContent {
+  flex: 1;
+  padding-top: 0.5rem;
+}
+
+.stepContent h3 {
+  margin: 0 0 0.5rem;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.stepContent p {
+  margin: 0 0 0.5rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.stepTime {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+.stepConnector {
+  position: absolute;
+  left: 29px;
+  top: 60px;
+  width: 2px;
+  height: 60px;
+  background: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.stepConnector.completed {
+  background: #4CAF50;
+}
+
+.deliveryInfo {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.deliveryInfo h2 {
+  margin: 0 0 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.deliveryCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.deliveryAddress h3,
+.estimatedDelivery h3 {
+  margin: 0 0 1rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.deliveryAddress p {
+  margin: 0.3rem 0;
+  color: #666;
+}
+
+.deliveryDate {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2e7d32;
+  margin: 0 0 0.5rem;
+}
+
+.deliveryTime {
+  color: #666;
+  margin: 0;
+}
+
+.orderItems {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.orderItems h2 {
+  margin: 0 0 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.orderItem:hover {
+  background: #f0f2f5;
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.itemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itemDetails {
+  flex: 1;
+}
+
+.itemDetails h3 {
+  margin: 0 0 0.3rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.itemDetails p {
+  margin: 0.2rem 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.itemMeta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.itemMeta span {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.itemPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.blockchainInfo {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.blockchainInfo h2 {
+  margin: 0 0 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.blockchainCard {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.txInfo {
+  margin-bottom: 1.5rem;
+}
+
+.txRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  align-items: center;
+}
+
+.txRow span:first-child {
+  color: #666;
+  font-weight: 500;
+}
+
+.txRow span:last-child {
+  color: #333;
+  font-weight: 600;
+}
+
+.txHash {
+  font-family: monospace;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+.confirmed {
+  color: #4CAF50;
+}
+
+.viewOnExplorer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewOnExplorer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.continueShoppingBtn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.continueShoppingBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.supportBtn {
+  background: transparent;
+  color: #667eea;
+  border: 2px solid #667eea;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.supportBtn:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .orderHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .deliveryCard {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .orderItem {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .itemDetails {
+    text-align: center;
+  }
+  
+  .itemMeta {
+    justify-content: center;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .txRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .progressStep {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .stepConnector {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

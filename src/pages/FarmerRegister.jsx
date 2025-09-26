@@ -87,7 +87,7 @@ const FarmerRegister = () => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Store user data in localStorage
+      // Store user data in localStorage (in real app, password should be hashed)
       const userData = {
         ...formData,
         userType: 'farmer',
@@ -95,10 +95,11 @@ const FarmerRegister = () => {
         registeredAt: new Date().toISOString()
       };
       
-      // Remove password from stored data
-      const { password, confirmPassword, ...userDataToStore } = userData;
+      // For demo purposes, keep password (in real app, hash it first)
+      const { confirmPassword, ...userDataToStore } = userData;
       
       localStorage.setItem('agrichain-user', JSON.stringify(userDataToStore));
+      localStorage.setItem('currentUser', JSON.stringify(userDataToStore));
       localStorage.setItem('agrichain-pending-verification', 'true');
       
       // Navigate to verification

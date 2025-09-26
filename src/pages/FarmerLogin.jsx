@@ -9,8 +9,8 @@ const FarmerLogin = () => {
   const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: 'farmer@test.com',
+    password: 'password123'
   });
   
   const [errors, setErrors] = useState({});
@@ -60,15 +60,30 @@ const FarmerLogin = () => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Mock authentication - in real app, this would be an API call
-      const storedUser = localStorage.getItem('agrichain-user');
+      // Create test user if it doesn't exist
+      let storedUser = localStorage.getItem('agrichain-user');
+      if (!storedUser && formData.email === 'farmer@test.com') {
+        const testUser = {
+          name: 'Test Farmer',
+          email: 'farmer@test.com',
+          password: 'password123',
+          phone: '9876543210',
+          address: '123 Farm Street',
+          userType: 'farmer',
+          id: 'test-farmer-1',
+          registeredAt: new Date().toISOString()
+        };
+        localStorage.setItem('agrichain-user', JSON.stringify(testUser));
+        storedUser = JSON.stringify(testUser);
+      }
       
+      // Mock authentication - in real app, this would be an API call
       if (storedUser) {
         const userData = JSON.parse(storedUser);
-        if (userData.email === formData.email && userData.userType === 'farmer') {
-          // Successful login
+        if (userData.email === formData.email && userData.password === formData.password && userData.userType === 'farmer') {
+          // Successful login - store as currentUser for dashboard access
           localStorage.setItem('agrichain-auth-token', 'mock-jwt-token');
-          localStorage.setItem('agrichain-current-user', storedUser);
+          localStorage.setItem('currentUser', storedUser);
           navigate('/farmer/dashboard');
         } else {
           setErrors({ general: 'Invalid email or password' });
