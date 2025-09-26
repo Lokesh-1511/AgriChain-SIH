@@ -1,0 +1,463 @@
+/* Reusable UI Components CSS Module */
+
+/* ===== CONTAINERS ===== */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+}
+
+.containerSm {
+  max-width: var(--container-sm);
+}
+
+.containerMd {
+  max-width: var(--container-md);
+}
+
+.containerLg {
+  max-width: var(--container-lg);
+}
+
+.containerXl {
+  max-width: var(--container-xl);
+}
+
+.container2xl {
+  max-width: var(--container-2xl);
+}
+
+/* ===== GRID SYSTEM ===== */
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.gridCols1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.gridCols2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gridCols3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gridCols4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.gridCols5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.gridCols6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+.gridAutoFit {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.gridAutoFill {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.gap1 { gap: var(--space-1); }
+.gap2 { gap: var(--space-2); }
+.gap3 { gap: var(--space-3); }
+.gap4 { gap: var(--space-4); }
+.gap6 { gap: var(--space-6); }
+.gap8 { gap: var(--space-8); }
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--gradient-card);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  border: var(--border-width) solid var(--color-gray-200);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.cardCompact {
+  padding: var(--space-3);
+}
+
+.cardSpacious {
+  padding: var(--space-6);
+}
+
+.cardFlat {
+  box-shadow: none;
+  border: var(--border-width) solid var(--color-gray-200);
+}
+
+.cardElevated {
+  box-shadow: var(--shadow-xl);
+}
+
+.cardInteractive {
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+}
+
+.cardInteractive:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-2xl);
+}
+
+.cardGradient {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  border: none;
+}
+
+.cardGradientAccent {
+  background: var(--gradient-accent);
+  color: var(--color-white);
+  border: none;
+}
+
+/* ===== BUTTONS ===== */
+.btnBase {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btnBase:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btnBase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-slow);
+}
+
+.btnBase:hover::before {
+  left: 100%;
+}
+
+/* Button Sizes */
+.btnSm {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+  min-height: var(--size-button-sm);
+}
+
+.btnMd {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-base);
+  min-height: var(--size-button);
+}
+
+.btnLg {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-lg);
+  min-height: var(--size-button-lg);
+}
+
+/* Button Variants */
+.btnPrimary {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-button);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.btnSecondary {
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+  border-color: var(--color-gray-300);
+}
+
+.btnSecondary:hover {
+  background: var(--color-gray-200);
+  transform: translateY(-1px);
+}
+
+.btnAccent {
+  background: var(--gradient-accent);
+  color: var(--color-white);
+  box-shadow: var(--shadow-button);
+}
+
+.btnAccent:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.btnSuccess {
+  background: var(--gradient-success);
+  color: var(--color-white);
+}
+
+.btnWarning {
+  background: linear-gradient(135deg, var(--color-warning) 0%, var(--color-warning-dark) 100%);
+  color: var(--color-white);
+}
+
+.btnError {
+  background: linear-gradient(135deg, var(--color-error) 0%, var(--color-error-dark) 100%);
+  color: var(--color-white);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btnGhost:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+.btnLink {
+  background: transparent;
+  color: var(--color-primary);
+  border: none;
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+.btnLink:hover {
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+/* Button States */
+.btnLoading {
+  position: relative;
+  color: transparent;
+}
+
+.btnLoading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ===== BADGES ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badgePrimary {
+  background: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+.badgeSecondary {
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+.badgeSuccess {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.badgeWarning {
+  background: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.badgeError {
+  background: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+
+.badgeInfo {
+  background: var(--color-info-light);
+  color: var(--color-info-dark);
+}
+
+/* ===== SKELETON LOADERS ===== */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-gray-200) 25%, var(--color-gray-100) 50%, var(--color-gray-200) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeletonText {
+  height: 1em;
+  margin-bottom: var(--space-1);
+}
+
+.skeletonTitle {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: var(--space-2);
+}
+
+.skeletonParagraph {
+  height: 1em;
+  width: 100%;
+  margin-bottom: var(--space-1);
+}
+
+.skeletonParagraph:last-child {
+  width: 80%;
+}
+
+.skeletonCircle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.skeletonButton {
+  height: var(--size-button);
+  width: 120px;
+  border-radius: var(--radius);
+}
+
+.skeletonCard {
+  height: 200px;
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* ===== FORM ELEMENTS ===== */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+}
+
+.input {
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-gray-300);
+  border-radius: var(--radius);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+  background: var(--color-white);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.input:disabled {
+  background: var(--color-gray-100);
+  cursor: not-allowed;
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.textCenter { text-align: center; }
+.textLeft { text-align: left; }
+.textRight { text-align: right; }
+
+.textSm { font-size: var(--font-size-sm); }
+.textBase { font-size: var(--font-size-base); }
+.textLg { font-size: var(--font-size-lg); }
+.textXl { font-size: var(--font-size-xl); }
+.text2xl { font-size: var(--font-size-2xl); }
+.text3xl { font-size: var(--font-size-3xl); }
+
+.fontNormal { font-weight: var(--font-weight-normal); }
+.fontMedium { font-weight: var(--font-weight-medium); }
+.fontSemibold { font-weight: var(--font-weight-semibold); }
+.fontBold { font-weight: var(--font-weight-bold); }
+
+.textPrimary { color: var(--color-primary); }
+.textSecondary { color: var(--color-gray-600); }
+.textMuted { color: var(--color-gray-500); }
+.textError { color: var(--color-error); }
+.textSuccess { color: var(--color-success); }
+.textWarning { color: var(--color-warning); }
+
+.hidden { display: none; }
+.visible { display: block; }
+
+.rounded { border-radius: var(--radius); }
+.roundedLg { border-radius: var(--radius-lg); }
+.roundedFull { border-radius: var(--radius-full); }
+
+.shadow { box-shadow: var(--shadow); }
+.shadowMd { box-shadow: var(--shadow-md); }
+.shadowLg { box-shadow: var(--shadow-lg); }
+.shadowXl { box-shadow: var(--shadow-xl); }
+
+/* ===== RESPONSIVE UTILITIES ===== */
+@media (min-width: 640px) {
+  .smGridCols2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .smGridCols3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .smGridCols4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .smHidden { display: none; }
+  .smVisible { display: block; }
+}
+
+@media (min-width: 1024px) {
+  .lgGridCols3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lgGridCols4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lgGridCols5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .lgHidden { display: none; }
+  .lgVisible { display: block; }
+}

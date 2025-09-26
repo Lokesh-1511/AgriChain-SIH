@@ -1,11 +1,11 @@
 .schemeCard {
-  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 1px 6px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--gradient-card);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-bounce);
   animation: slideUpFadeIn 0.7s ease-out;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: var(--border-width) solid rgba(255, 255, 255, 0.8);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(20px);
@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+  background: linear-gradient(90deg, var(--color-info) 0%, var(--color-info-dark) 50%, var(--color-info-dark) 100%);
 }
 
 .schemeCard::after {
