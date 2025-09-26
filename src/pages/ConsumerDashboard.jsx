@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import mockProducts from '../data/mockProducts.json';
 import styles from '../styles/ConsumerDashboard.module.css';
 import QRPreview from '../components/QRPreview';
+import ChatWidget from '../components/ChatWidget';
 
 const ConsumerProductCard = ({ product, onShowQR }) => {
   const { addToCart } = useCart();
@@ -259,6 +260,19 @@ const ConsumerDashboard = () => {
           onClose={handleCloseQR}
         />
       )}
+      
+      {/* Chat Widget */}
+      <ChatWidget 
+        userType="consumer"
+        intentPresets={[
+          { text: '🛒 Find Fresh Products', intent: 'find_products' },
+          { text: '📍 Track My Order', intent: 'track_order' },
+          { text: '💳 Payment Help', intent: 'payment_help' },
+          { text: '🔍 Product Quality Info', intent: 'quality_info' },
+          { text: '🚚 Delivery Options', intent: 'delivery_info' },
+          { text: '💰 Best Deals Today', intent: 'deals_offers' }
+        ]}
+      />
     </div>
   );
 };

@@ -52,8 +52,8 @@ const ConsumerLogin = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Create test user if it doesn't exist
-      let storedConsumers = JSON.parse(localStorage.getItem('consumers') || '[]');
-      if (storedConsumers.length === 0 && formData.email === 'consumer@test.com') {
+      let storedUser = localStorage.getItem('agrichain-user');
+      if (!storedUser && formData.email === 'consumer@test.com') {
         const testConsumer = {
           name: 'Test Consumer',
           email: 'consumer@test.com',
@@ -64,29 +64,33 @@ const ConsumerLogin = () => {
           id: 'test-consumer-1',
           registeredAt: new Date().toISOString()
         };
-        storedConsumers = [testConsumer];
-        localStorage.setItem('consumers', JSON.stringify(storedConsumers));
+        localStorage.setItem('agrichain-user', JSON.stringify(testConsumer));
+        storedUser = JSON.stringify(testConsumer);
       }
       
-      // Find matching consumer
-      const consumer = storedConsumers.find(c => 
-        c.email.toLowerCase() === formData.email.toLowerCase() && 
-        c.password === formData.password
-      );
-      
-      if (consumer) {
-        // Store current consumer session
-        localStorage.setItem('currentUser', JSON.stringify({
-          ...consumer,
-          userType: 'consumer'
-        }));
-        
-        alert('Login successful! Welcome back, ' + consumer.name);
-        navigate('/consumer'); // Redirect to consumer dashboard
+      // Mock authentication - in real app, this would be an API call
+      if (storedUser) {
+        const userData = JSON.parse(storedUser);
+        if (userData.email === formData.email && userData.password === formData.password) {
+          // Successful login - store as currentUser for dashboard access
+          localStorage.setItem('agrichain-auth-token', 'mock-jwt-token');
+          localStorage.setItem('currentUser', JSON.stringify({
+            ...userData,
+            userType: 'consumer'
+          }));
+          
+          alert('Login successful! Welcome back, ' + userData.name);
+          navigate('/consumer'); // Redirect to consumer dashboard
+        } else {
+          setErrors({ 
+            email: 'Invalid email or password', 
+            password: 'Invalid email or password' 
+          });
+        }
       } else {
         setErrors({ 
-          email: 'Invalid email or password', 
-          password: 'Invalid email or password' 
+          email: 'Account not found. Please register first.',
+          password: 'Account not found. Please register first.'
         });
       }
     } catch (error) {

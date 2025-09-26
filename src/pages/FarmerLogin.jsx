@@ -16,6 +16,23 @@ const FarmerLogin = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Debug function to clear localStorage
+  const clearDebugData = () => {
+    localStorage.clear();
+    alert('localStorage cleared! Try logging in again.');
+  };
+
+  // Debug function to show localStorage contents
+  const showDebugData = () => {
+    const data = {
+      'agrichain-user': localStorage.getItem('agrichain-user'),
+      'currentUser': localStorage.getItem('currentUser'),
+      'agrichain-auth-token': localStorage.getItem('agrichain-auth-token')
+    };
+    console.log('Debug localStorage contents:', data);
+    alert('Check console for localStorage contents');
+  };
+
   const validateForm = () => {
     const newErrors = {};
     
@@ -60,9 +77,17 @@ const FarmerLogin = () => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Create test user if it doesn't exist
+      console.log('FarmerLogin: Starting authentication...', { email: formData.email, password: formData.password });
+      
+      // Clear any existing authentication data to prevent conflicts
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('agrichain-auth-token');
+      
+      // Create test user if it doesn't exist OR if using test credentials
       let storedUser = localStorage.getItem('agrichain-user');
-      if (!storedUser && formData.email === 'farmer@test.com') {
+      console.log('FarmerLogin: StoredUser from localStorage:', storedUser);
+      
+      if (formData.email === 'farmer@test.com') {
         const testUser = {
           name: 'Test Farmer',
           email: 'farmer@test.com',
@@ -73,6 +98,7 @@ const FarmerLogin = () => {
           id: 'test-farmer-1',
           registeredAt: new Date().toISOString()
         };
+        console.log('FarmerLogin: Creating/updating test user:', testUser);
         localStorage.setItem('agrichain-user', JSON.stringify(testUser));
         storedUser = JSON.stringify(testUser);
       }
@@ -80,15 +106,36 @@ const FarmerLogin = () => {
       // Mock authentication - in real app, this would be an API call
       if (storedUser) {
         const userData = JSON.parse(storedUser);
-        if (userData.email === formData.email && userData.password === formData.password && userData.userType === 'farmer') {
+        console.log('FarmerLogin: Parsed user data:', userData);
+        console.log('FarmerLogin: Comparing credentials...', {
+          storedEmail: userData.email,
+          inputEmail: formData.email,
+          storedPassword: userData.password,
+          inputPassword: formData.password
+        });
+        
+        if (userData.email === formData.email && userData.password === formData.password) {
           // Successful login - store as currentUser for dashboard access
+          const currentUserData = {
+            ...userData,
+            userType: 'farmer'
+          };
+          console.log('FarmerLogin: Authentication successful! Setting currentUser:', currentUserData);
+          
           localStorage.setItem('agrichain-auth-token', 'mock-jwt-token');
-          localStorage.setItem('currentUser', storedUser);
+          localStorage.setItem('currentUser', JSON.stringify(currentUserData));
+          
+          // Debug: Verify what we just stored
+          console.log('FarmerLogin: Verification - currentUser stored as:', localStorage.getItem('currentUser'));
+          
+          alert('Farmer login successful! Redirecting to dashboard...');
           navigate('/farmer/dashboard');
         } else {
+          console.log('FarmerLogin: Authentication failed - credentials mismatch');
           setErrors({ general: 'Invalid email or password' });
         }
       } else {
+        console.log('FarmerLogin: No stored user found');
         setErrors({ general: 'Account not found. Please register first.' });
       }
       

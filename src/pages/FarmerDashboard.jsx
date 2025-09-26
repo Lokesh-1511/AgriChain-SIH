@@ -4,6 +4,7 @@ import Modal from '../components/Modal';
 import ProductCard from '../components/ProductCard';
 import ProgressRing from '../components/ProgressRing';
 import SchemeCard from '../components/SchemeCard';
+import ChatWidget from '../components/ChatWidget';
 import mockTransactions from '../data/mockTransactions.json';
 import styles from '../styles/FarmerDashboard.module.css';
 
@@ -552,6 +553,19 @@ const FarmerDashboard = () => {
           </form>
         </Modal>
       )}
+      
+      {/* Chat Widget */}
+      <ChatWidget 
+        userType="farmer"
+        intentPresets={[
+          { text: '📊 Market Prices', intent: 'market_prices' },
+          { text: '📦 List New Product', intent: 'list_product' },
+          { text: '💰 Check Wallet', intent: 'wallet_balance' },
+          { text: '📈 Sales Analytics', intent: 'sales_analytics' },
+          { text: '🌾 Crop Advisory', intent: 'crop_advisory' },
+          { text: '📞 Support Help', intent: 'support' }
+        ]}
+      />
     </div>
   );
 };
